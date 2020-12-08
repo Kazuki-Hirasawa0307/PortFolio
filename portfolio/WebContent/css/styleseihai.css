@@ -1,0 +1,80 @@
+body{
+  margin: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+header{
+  height: 250px;
+}
+/* nav{
+  width: 150px;
+} */
+aside{
+  width: 200px;
+  margin-top: 20px;
+  margin-right: 20px;
+  border-right:dashed;
+}
+main{
+  flex: 1;
+  margin-left: 20px;
+  
+}
+main h3{
+  line-height: 45px
+}
+main ul{
+  line-height: 30px
+}
+div{
+  display: flex;
+  /* flex: 1; */
+}
+footer{
+  height: 90px;
+}
+.topPic {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+.kaoPic {
+  width: 150px;
+  height: 150px;
+  object-fit: cover; /* この一行を追加するだけ！ */
+  border-radius: 10%;
+}
+
+.daihyo{
+  margin: 0;
+}
+
+.dadada{
+  position: relative;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+.dadadada{
+  position: relative;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+.dadada p{
+  position: absolute;/*絶対配置*/
+  color: rgb(0, 0, 0);/*文字は白に*/
+  font-weight: bold; /*太字に*/
+  /* font-size: 2em; */
+  font-family :Quicksand, sans-serif;/*Google Font*/
+  top: 00%;
+  left: 10%;
+}
+.dadadada p{
+  position: absolute;/*絶対配置*/
+  color: rgb(255, 255, 255);/*文字は白に*/
+  font-weight: bold; /*太字に*/
+  /* font-size: 2em; */
+  font-family :Quicksand, sans-serif;/*Google Font*/
+  top: 0%;
+  left: 10%;
+}
