@@ -17,21 +17,7 @@
 <body>
 	<header>
 		<div class="topp">
-			<svg viewBox="0 0 1000 200">
-  <symbol id="s-text">
-    <text text-anchor="middle" x="70%" y="80%"
-					stayle="margin-bottom:30px">Hello</text>
-  </symbol>
-
-  <g class="g-ants">
-    <use xlink:href="#s-text" class="text-copy"></use>
-    <use xlink:href="#s-text" class="text-copy"></use>
-    <use xlink:href="#s-text" class="text-copy"></use>
-    <use xlink:href="#s-text" class="text-copy"></use>
-    <use xlink:href="#s-text" class="text-copy"></use>
-  </g>
-</svg>
-			<img src="img\google-headquarters.jpg" class="topPic">
+			<img src="img\TopPic.jpg" class="topPic">
 		</div>
 		<div class="mask" id="mask"></div>
 
