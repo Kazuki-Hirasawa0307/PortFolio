@@ -1,4 +1,4 @@
-package testdb;
+package servlet;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.StatusCheckDAO;
 import model.TimeListBean;
+import timeDAO.StatusCheckDAO;
 
 
 @WebServlet("/statusCheak")

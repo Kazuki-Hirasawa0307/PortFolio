@@ -1,4 +1,4 @@
-package servlet;
+package accounServlet;
 
 import java.io.IOException;
 

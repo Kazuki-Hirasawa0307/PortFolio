@@ -1,4 +1,4 @@
-package dao;
+package timeDAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -124,7 +124,7 @@ public class MonthUpdateDAO {
 			} else if (param == 4) {
 				System.out.println("ng");
 				sql = "INSERT INTO " + tb.getLoginId() + "account(year, month, workday, worktime, overtime, "
-						+ "houteitime, hougaitime, dayoffworkday, lateday, latetime, shinya) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+						+ "houteitime, hougaitime, dayoffworkday, lateday, latetime, shinya, paidvacation, absence) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, tb.getSalaryyear());
 				ps.setInt(2, tb.getSalarymonth());
@@ -137,6 +137,8 @@ public class MonthUpdateDAO {
 				ps.setInt(9, tb.getLateday());
 				ps.setInt(10, tb.getLatetime());
 				ps.setInt(11, tb.getNightworktime());
+				ps.setInt(12, tb.getPaidvacation());
+				ps.setInt(13, tb.getAbsence());
 				ps.executeUpdate();
 
 			}

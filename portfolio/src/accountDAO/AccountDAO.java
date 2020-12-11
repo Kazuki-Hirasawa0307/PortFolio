@@ -1,4 +1,4 @@
-package dao;
+package accountDAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -79,6 +79,7 @@ public class AccountDAO {
 					returnAb.setMail(rs.getString("mail"));
 					returnAb.setBirthday(rs.getInt("birthday"));
 					returnAb.setResident(rs.getInt("resident"));
+					
 
 				} else {
 					// アカウントがなければnullを返す

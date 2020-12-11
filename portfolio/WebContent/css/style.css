@@ -14,6 +14,12 @@ a{
 
 } */
 
+.menu{
+	  display: block;
+  position: fixed; /* 固定コマンド */
+}
+
+
 .menuButton{
   display: block;
   height: 80px;
@@ -42,10 +48,10 @@ a{
 
 .menuButton div:nth-of-type(1){
   transform: translate(-50%,-15px);
-} 
+}
 .menuButton div:nth-of-type(3){
   transform: translate(-50%,15px);
-} 
+}
 
 .menuButton.active div:nth-of-type(1){
   transform: rotate(45deg) translate(-50%,-0px);
@@ -122,3 +128,5 @@ nav.active{
 .RealtimeClockArea2{
   font-size: 50px;
 }
+
+

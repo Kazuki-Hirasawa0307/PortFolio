@@ -1,4 +1,4 @@
-package testdb;
+package method;
 
 import java.util.ArrayList;
 
@@ -38,6 +38,7 @@ public class SalaryColc {
 		ArrayList<Integer> finishminute = tb.getSalaryfinishminute(); 	//今月の退勤分取得
 		ArrayList<String> weeks = tb.getSalaryweeks();					//今月の曜日配列取得
 
+		System.out.println(day);
 
 		for (int i = 0; i < day; i++) { 							//当月の日数回繰り返し
 			String week = weeks.get(i);

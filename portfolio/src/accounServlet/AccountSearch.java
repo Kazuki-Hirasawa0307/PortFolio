@@ -1,4 +1,4 @@
-package servlet;
+package accounServlet;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.AccountDAO;
+import accountDAO.AccountDAO;
 import model.TimeListBean;
 
 /**
@@ -99,23 +99,27 @@ public class AccountSearch extends HttpServlet {
 		// 検索したアカウント情報を取得
 		AccountDAO ad = new AccountDAO();
 		TimeListBean returnAb = ad.findAccount(ab);
-
 		if (returnAb != null) {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("id", loginId);
 			session.setAttribute("pass", pass);
 			session.setAttribute("role", returnAb.getRole());
-
+			session.setAttribute("name", returnAb.getName());
 			int role = returnAb.getRole();
+
 			if (role == 2) {
 				session.setAttribute("account", returnAb);
+
 				RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
 				rd.forward(request, response);
-			} else {
+			} else if(role == 1){
 				// セッションにアカウント情報＆ロールを登録
 				session.setAttribute("account", returnAb);
-				RequestDispatcher rd = request.getRequestDispatcher("/topj");
-				rd.forward(request, response);
+
+//				RequestDispatcher rd = request.getRequestDispatcher("/topj");
+//				rd.forward(request, response);
+		    	response.sendRedirect("http://localhost:8080/portfolio/topj");	//ステータスチェックサーブレットへ処理遷移
+
 			}
 
 		} else {

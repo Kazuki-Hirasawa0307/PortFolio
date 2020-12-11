@@ -134,8 +134,143 @@ public class TimeListBean {
 	private int salaryyear;
 	private int salarymonth;
 
+	private String dayoffname;
+	private String dayoffid;
+	private String joinname;
+	private String joinid;
+	private int dayoffyear;
+	private int dayoffmonth;
+	private int dayoffday;
+	private int daystatus;
+
+	private ArrayList<String> dayoffnames;
+	private ArrayList<String> dayoffids;
+	private ArrayList<Integer> daystatuses;
+	private ArrayList<Integer> dayoffyears;
+	private ArrayList<Integer> dayoffmonths;
+	private ArrayList<Integer> dayoffdays;
+	private ArrayList<String> joinnames;
+	private ArrayList<String> joinids;
+	private String message;
+
+	private int displaymonth;
+	ArrayList<Integer> dmonth;
 
 
+	public ArrayList<Integer> getDmonth() {
+		return dmonth;
+	}
+	public void setDmonth(ArrayList<Integer> dmonth) {
+		this.dmonth = dmonth;
+	}
+	public int getDisplaymonth() {
+		return displaymonth;
+	}
+	public void setDisplaymonth(int displaymonth) {
+		this.displaymonth = displaymonth;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public ArrayList<String> getDayoffnames() {
+		return dayoffnames;
+	}
+	public void setDayoffnames(ArrayList<String> dayoffnames) {
+		this.dayoffnames = dayoffnames;
+	}
+	public ArrayList<String> getDayoffids() {
+		return dayoffids;
+	}
+	public void setDayoffids(ArrayList<String> dayoffids) {
+		this.dayoffids = dayoffids;
+	}
+	public ArrayList<Integer> getDaystatuses() {
+		return daystatuses;
+	}
+	public void setDaystatuses(ArrayList<Integer> daystatuses) {
+		this.daystatuses = daystatuses;
+	}
+	public ArrayList<Integer> getDayoffyears() {
+		return dayoffyears;
+	}
+	public void setDayoffyears(ArrayList<Integer> dayoffyears) {
+		this.dayoffyears = dayoffyears;
+	}
+	public ArrayList<Integer> getDayoffmonths() {
+		return dayoffmonths;
+	}
+	public void setDayoffmonths(ArrayList<Integer> dayoffmonths) {
+		this.dayoffmonths = dayoffmonths;
+	}
+	public ArrayList<Integer> getDayoffdays() {
+		return dayoffdays;
+	}
+	public void setDayoffdays(ArrayList<Integer> dayoffdays) {
+		this.dayoffdays = dayoffdays;
+	}
+	public ArrayList<String> getJoinnames() {
+		return joinnames;
+	}
+	public void setJoinnames(ArrayList<String> joinnames) {
+		this.joinnames = joinnames;
+	}
+	public ArrayList<String> getJoinids() {
+		return joinids;
+	}
+	public void setJoinids(ArrayList<String> joinids) {
+		this.joinids = joinids;
+	}
+	public String getDayoffname() {
+		return dayoffname;
+	}
+	public void setDayoffname(String dayoffname) {
+		this.dayoffname = dayoffname;
+	}
+	public String getDayoffid() {
+		return dayoffid;
+	}
+	public void setDayoffid(String dayoffid) {
+		this.dayoffid = dayoffid;
+	}
+	public String getJoinname() {
+		return joinname;
+	}
+	public void setJoinname(String joinname) {
+		this.joinname = joinname;
+	}
+	public String getJoinid() {
+		return joinid;
+	}
+	public void setJoinid(String joinid) {
+		this.joinid = joinid;
+	}
+	public int getDayoffyear() {
+		return dayoffyear;
+	}
+	public void setDayoffyear(int dayoffyear) {
+		this.dayoffyear = dayoffyear;
+	}
+	public int getDayoffmonth() {
+		return dayoffmonth;
+	}
+	public void setDayoffmonth(int dayoffmonth) {
+		this.dayoffmonth = dayoffmonth;
+	}
+	public int getDayoffday() {
+		return dayoffday;
+	}
+	public void setDayoffday(int dayoffday) {
+		this.dayoffday = dayoffday;
+	}
+	public int getDaystatus() {
+		return daystatus;
+	}
+	public void setDaystatus(int daystatus) {
+		this.daystatus = daystatus;
+	}
 	public int getSalaryyear() {
 		return salaryyear;
 	}

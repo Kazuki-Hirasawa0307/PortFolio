@@ -31,7 +31,7 @@
 				<hr />
 			</div>
 			<h2>
-				<a href="emplofix.jsp" class="aa">社員の有給、欠勤入力フォーム</a>
+				<a href="http://localhost:8080/portfolio/AccountDayOff">社員の有給、欠勤入力フォーム</a>
 			</h2>
 			<br />
 			<div>

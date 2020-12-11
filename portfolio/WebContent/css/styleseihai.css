@@ -4,6 +4,16 @@ body{
   display: flex;
   flex-direction: column;
 }
+
+.topp{
+	 position: relative;/*相対配置*/
+}
+.topp h1 {
+  position: absolute;/*絶対配置*/
+  color: white;/*文字は白に*/
+  top: 0;
+  left: 0;
+  }
 header{
   height: 250px;
 }
@@ -14,12 +24,13 @@ aside{
   width: 200px;
   margin-top: 20px;
   margin-right: 20px;
-  border-right:dashed;
+
+  position: absolute; /* 固定コマンド */
 }
 main{
   flex: 1;
-  margin-left: 20px;
-  
+  margin-left: 200px;
+
 }
 main h3{
   line-height: 45px
@@ -33,11 +44,14 @@ div{
 }
 footer{
   height: 90px;
+  margin-left: 200px;
+
 }
 .topPic {
   width: 100%;
   height: 250px;
   object-fit: cover;
+
 }
 .kaoPic {
   width: 150px;
@@ -45,6 +59,7 @@ footer{
   object-fit: cover; /* この一行を追加するだけ！ */
   border-radius: 10%;
 }
+
 
 .daihyo{
   margin: 0;
@@ -77,4 +92,90 @@ footer{
   font-family :Quicksand, sans-serif;/*Google Font*/
   top: 0%;
   left: 10%;
+}
+
+
+svg {
+    display: block;
+    position: absolute;/*絶対配置*/
+    font: 10.5em 'Montserrat';
+    width: 960px;
+    height: 300px;
+    margin:	auto;
+}
+
+.text-copy {
+    fill: none;
+    stroke: white;
+    stroke-dasharray: 6% 29%;
+    stroke-width: 5px;
+    stroke-dashoffset: 0%;
+    animation: stroke-offset 5.5s infinite linear;
+}
+
+.text-copy:nth-child(1){
+  stroke: #0099CC;
+  animation-delay: -1;
+}
+
+.text-copy:nth-child(2){
+  stroke: #FFFFFF;
+  animation-delay: -2s;
+}
+
+.text-copy:nth-child(3){
+  stroke: #006699;
+  animation-delay: -3s;
+}
+
+.text-copy:nth-child(4){
+  stroke: #FFFFFF;
+  animation-delay: -4s;
+}
+
+.text-copy:nth-child(5){
+  stroke: #003366;
+  animation-delay: -5s;
+}
+
+@keyframes stroke-offset{
+  100% {stroke-dashoffset: -35%;}
+}
+
+h2 {
+    font-size: 40px;
+    line-height: 50px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: rgba(0, 0, 0, .2) 3px 3px 3px;
+    -webkit-text-stroke: 2px #66CCFF;
+}
+
+.menumenu{
+	float:left;
+	width: calc(42% - 16px);
+	margin-left:8%;
+		margin-top:20px;
+	margin-bottom:20px;
+
+}
+.menupic {
+  width: 80px;
+  height: 80px;
+  object-fit: cover; /* この一行を追加するだけ！ */
+  border-radius: 10%;
+}
+
+.menu2 {
+flex-direction: column;
+margin-left:8px;
+
+}
+.menu2 a{
+color:#0088cc;
+font-size:15px;
+}
+.menu2 p{
+font-size:13px;
+margin:0;
 }

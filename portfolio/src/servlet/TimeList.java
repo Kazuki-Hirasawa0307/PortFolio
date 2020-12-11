@@ -1,4 +1,4 @@
-package testdb;
+package servlet;
 
 import java.io.IOException;
 
@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.TimeListDAO;
+import method.TimeListColc;
 import model.TimeListBean;
+import timeDAO.TimeListDAO;
 
 @WebServlet("/timelist")
 public class TimeList extends HttpServlet {
@@ -22,6 +23,7 @@ public class TimeList extends HttpServlet {
 		//ーーーーーーーーーーdogetはメニューより勤務時間一覧を押すことで処理ーーーーーーーーーー
 
 		//ーーーーーーーーーーーセッションより年月日取得、セットーーーーーーーーーーーーーーーーーーー
+
 		TimeListBean tb = new TimeListBean(); //ビーン取得
 		HttpSession session = request.getSession(false); //session取得
 		if (session == null) { //セッションが切れていれば再度ログイン
@@ -30,10 +32,11 @@ public class TimeList extends HttpServlet {
 		} else {
 			try {
 			String id = (String) session.getAttribute("id"); //loginIDを取得
-			tb.setLoginId(id); //ビーンにIDセット
 			int days = (Integer) session.getAttribute("days"); //セッションから今日の日取得
+			System.out.println(id);
 			int smonth = (Integer) session.getAttribute("smonth"); //セッションから今日の月取得
 			int syear = (Integer) session.getAttribute("syear"); //セッションから今日の年取得
+			tb.setLoginId(id); //ビーンにIDセット
 			tb.setDays(days); //ビーンへ日セット
 			tb.setSmonth(smonth); //ビーンへ月セット
 			tb.setSyear(syear); //ビーンへ年セット
@@ -80,12 +83,12 @@ public class TimeList extends HttpServlet {
 	    	request.setAttribute("role", role);
 
 			}catch(Exception e) {
-				System.out.println(e);
-				String message = "不正な操作です。再度ログインしてください。";
-				session.invalidate();
-		        request.setAttribute("message", message);
-				RequestDispatcher dispatcher =  request.getRequestDispatcher("login.jsp");
-		    	dispatcher.forward(request, response);
+//				System.out.println(e);
+//				String message = "不正な操作です。再度ログインしてください。";
+//				session.invalidate();
+//		        request.setAttribute("message", message);
+//				RequestDispatcher dispatcher =  request.getRequestDispatcher("login.jsp");
+//		    	dispatcher.forward(request, response);
 			}
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("timelist.jsp");

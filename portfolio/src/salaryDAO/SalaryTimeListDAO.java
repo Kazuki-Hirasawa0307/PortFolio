@@ -1,4 +1,4 @@
-package dao;
+package salaryDAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,15 +10,12 @@ import java.util.ArrayList;
 
 import model.TimeListBean;
 
-public class TimeListDAO {
+public class SalaryTimeListDAO {
 
-	public TimeListDAO(TimeListBean tlb) {
+	public SalaryTimeListDAO(TimeListBean tlb) {
 		final String jdbcId = "root";
 		final String jdbcPass = "root";
 		final String jdbcUrl = "jdbc:mysql://localhost:3306/portfolio?serverTimezone=JST";
-		//	    TimeListBean tb = new TimeListBean();
-		//	    int mon = tb.getMonth();
-		//	    String month = String.valueOf(mon);
 
 		Connection conn = null;
 		Statement st = null;
@@ -40,8 +37,8 @@ public class TimeListDAO {
 			if (param == 0) {
 				sql = "SELECT * FROM " + tlb.getLoginId() + "starttime WHERE year = ? AND month = ?";
 				ps = conn.prepareStatement(sql);
-				ps.setInt(1, tlb.getSyear());
-				ps.setInt(2, tlb.getSmonth());
+				ps.setInt(1, tlb.getSalaryyear());
+				ps.setInt(2, tlb.getSalarymonth());
 				rs = ps.executeQuery();
 				while (rs.next()) {
 					day.add(rs.getInt("day"));
@@ -50,18 +47,21 @@ public class TimeListDAO {
 					smo = rs.getInt("month");
 					sy = rs.getInt("year");
 					weeks.add(rs.getString("week"));
+
 				}
-				tlb.setSmonth(smo);
-				tlb.setSyear(sy);
-				tlb.setStartday(day);
-				tlb.setStarthour(hour);
-				tlb.setStartminute(minute);
-				tlb.setWeeks(weeks);
+				tlb.setSalarystartmonth(smo);
+				tlb.setSalarystartyear(sy);
+				tlb.setSalarystartday(day);
+				tlb.setSalarystarthour(hour);
+				tlb.setSalarystartminute(minute);
+				tlb.setSalaryweeks(weeks);
+
 			} else if (param == 1) {
 				sql = "SELECT * FROM " + tlb.getLoginId() + "finishtime WHERE year = ? AND month = ?";
 				ps = conn.prepareStatement(sql);
-				ps.setInt(1, tlb.getSyear());
-				ps.setInt(2, tlb.getSmonth());
+				ps.setInt(1, tlb.getSalaryyear());
+				ps.setInt(2, tlb.getSalarymonth());
+
 				rs = ps.executeQuery();
 				while (rs.next()) {
 					day.add(rs.getInt("day"));
@@ -71,11 +71,11 @@ public class TimeListDAO {
 					sy = rs.getInt("year");
 					weeks.add(rs.getString("week"));
 				}
-				tlb.setFmonth(smo);
-				tlb.setFyear(sy);
-				tlb.setFinishday(day);
-				tlb.setFinishhour(hour);
-				tlb.setFinishminute(minute);
+				tlb.setSalaryfinishmonth(smo);
+				tlb.setSalaryfinishyear(sy);
+				tlb.setSalaryfinishday(day);
+				tlb.setSalaryfinishhour(hour);
+				tlb.setSalaryfinishminute(minute);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -1,4 +1,4 @@
-package testdb;
+package method;
 
 import model.TimeListBean;
 
@@ -65,7 +65,7 @@ public class SalaryTotal {
 		int kaigo = hoken[2] - kenkou;										//介護保険額計算
 		int koyou = hoken[3];												//雇用保険額取得
 		int tax = total - nenkin - kenkou - kaigo - koyou
-				- latemoney - returnAb.getTransport();						//課税対象額計算
+				- latemoney - returnAb.getTransport() - absencemoney;						//課税対象額計算
 		int syotoku = method.syotokuj(tax);								//syotokujメソッドから所得税取得
 
 //ーーーーーー以下returnTotalへ格納し、Top.javaへ戻すーーーーーーーーーーー
