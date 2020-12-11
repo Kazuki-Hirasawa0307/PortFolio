@@ -49,7 +49,7 @@
 			</div>
 		</aside>
 		<main>
-			<h1>打刻</h1>
+			<h2 class="title">Punch a clock</h2>
 			<hr>
 
 			<div class="aaa">現在のステータス</div>

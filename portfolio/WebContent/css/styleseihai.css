@@ -1,8 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
+@import url('https://fonts.googleapis.com/css?family=Sawarabi+Mincho');
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+JP');
+
+
+
 body{
   margin: 20px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+      font-family: 'Noto Serif JP', sans-serif;
+
 }
 
 .topp{
@@ -30,6 +38,7 @@ aside{
 main{
   flex: 1;
   margin-left: 200px;
+
 
 }
 main h3{
@@ -142,14 +151,7 @@ svg {
   100% {stroke-dashoffset: -35%;}
 }
 
-h2 {
-    font-size: 40px;
-    line-height: 50px;
-    font-weight: bold;
-    text-align: center;
-    text-shadow: rgba(0, 0, 0, .2) 3px 3px 3px;
-    -webkit-text-stroke: 2px #66CCFF;
-}
+
 
 .menumenu{
 	float:left;
@@ -179,3 +181,20 @@ font-size:15px;
 font-size:13px;
 margin:0;
 }
+
+.title {
+  font-size: 50px;
+  font-weight: 700;
+  font-family: 'Rubik', sans-serif;
+  flex: 1;
+  position: relative;
+  text-align: center;
+  margin: 0;
+  -webkit-text-fill-color: transparent;
+  background-image: url("http://66.media.tumblr.com/9d5be60c175cdbe15e875fef01b9a66b/tumblr_ntz3mmEFFr1twd8ddo1_500.gif");
+  background-size: cover;
+  -webkit-background-clip: text;
+  background-repeat: no-repeat;
+}
+
+

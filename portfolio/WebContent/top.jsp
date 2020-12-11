@@ -65,7 +65,7 @@
 		</aside>
 		<main>
 			<div id="container">
-				<h2>Manage Attendance By 〇〇 Co. Ltd.</h2>
+				<h2 class="title">Manage Attendance By 〇〇 Co. Ltd.</h2>
 			</div>
 
 			<hr />
@@ -82,7 +82,7 @@
 
 		<div class="menumenu">
 			<a href="http://localhost:8080/portfolio/topj">
-				<img src="img\21023010-広報-wordcloud-のイラスト.jpg"alt="" class="menupic"></a>
+				<img src="img\working_d06.png"alt="" class="menupic"></a>
 			<div class="menu2">
 			<a href="http://localhost:8080/portfolio/topj">打刻システム</a>
 			<p>出勤・退勤時に使用するページです。<br />
@@ -92,7 +92,7 @@
 
 		<div class="menumenu">
 			<a href="http://localhost:8080/portfolio/topj">
-				<img src="img\21023010-広報-wordcloud-のイラスト.jpg"alt="" class="menupic"></a>
+				<img src="img\clock2.jpg"alt="" class="menupic"></a>
 			<div class="menu2">
 			<a href="http://localhost:8080/portfolio/topj">出退勤時間一覧</a>
 			<p>今月の出勤・退勤時間一覧を確認できます。<br />
@@ -102,7 +102,7 @@
 
 		<div class="menumenu">
 			<a href="http://localhost:8080/portfolio/topj">
-				<img src="img\21023010-広報-wordcloud-のイラスト.jpg"alt="" class="menupic"></a>
+				<img src="img\dayoff.jpg"alt="" class="menupic"></a>
 			<div class="menu2">
 			<a href="http://localhost:8080/portfolio/topj">休暇申請フォーム</a>
 			<p>休暇の申請ができます<br />
@@ -112,7 +112,7 @@
 
 		<div class="menumenu">
 			<a href="http://localhost:8080/portfolio/topj">
-				<img src="img\21023010-広報-wordcloud-のイラスト.jpg"alt="" class="menupic"></a>
+				<img src="img\salary.jpg"alt="" class="menupic"></a>
 			<div class="menu2">
 			<a href="http://localhost:8080/portfolio/topj">給与明細</a>
 			<p>就職してから今までの明細を確認できます。<br />
@@ -121,7 +121,7 @@
 
 		<div class="menumenu">
 			<a href="http://localhost:8080/portfolio/topj">
-				<img src="img\21023010-広報-wordcloud-のイラスト.jpg"alt="" class="menupic"></a>
+				<img src="img\rogout.jpg"alt="" class="menupic"></a>
 			<div class="menu2">
 			<a href="http://localhost:8080/portfolio/topj">ログアウト</a>
 			<p>こちらからログアウトできます。<br />
