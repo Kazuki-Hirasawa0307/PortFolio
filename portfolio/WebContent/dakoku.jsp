@@ -2,7 +2,9 @@
 	pageEncoding="UTF-8"%>
 
 <%
-	int role = (Integer) request.getAttribute("role");
+String name = (String) request.getAttribute("name");
+String id = (String) request.getAttribute("id");
+int role = (Integer) request.getAttribute("role");
 %>
 
 <!DOCTYPE html>
@@ -12,14 +14,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>勤怠管理 打刻</title>
-<link rel="stylesheet" href="css\style.css">
-<link rel="stylesheet" href="css\styleDakoku.css">
-<link rel="stylesheet" href="css\styleseihai.css">
+<link rel="stylesheet" href="css\dakoku.css">
 </head>
 
 <body>
 	<header>
-		<img src="img\ac35b9adf4b7ba40f15161a3b72ae372.jpg" class="topPic">
+		<img src="img\dakoku.jpg" class="topPic">
 		<div class="mask" id="mask"></div>
 		<a class="menuButton" id="menuButton">
 			<div></div>
@@ -30,26 +30,20 @@
 	<div>
 		<aside>
 			<h3>社内お知らせ</h3>
-			<div class="dadada">
-				<p class="kouhou">今週の広報</p>
+			<div class="kouhou">
+				<p>広報</p>
 				<a href=""> <img src="img\21023010-広報-wordcloud-のイラスト.jpg"
 					alt="" class="kaoPic"></a>
 			</div>
-			<hr width="80%" align="left">
 
-			<div class="dadadada">
-				<p class="daihyo">今月の社内表彰</p>
+			<div class="hyousyou">
+				<p>社内表彰</p>
 				<a href=""> <img src="img\20170703_07_01.jpg" alt=""
 					class="kaoPic"></a>
 			</div>
-			<hr width="80%" align="left">
-			<div class="dadada">
-				<p class="daihyo">代表より皆様へ</p>
-				<a href=""> <img src="img\IMGP2187.JPG" alt="" class="kaoPic"></a>
-			</div>
 		</aside>
 		<main>
-			<h2 class="title">Punch a clock</h2>
+			<h1 class="title">打刻・退勤</h1>
 			<hr>
 
 			<div class="aaa">現在のステータス</div>
@@ -173,10 +167,18 @@
 		</nav>
 	</div>
 	<footer>
-		<hr />
-		各種操作は右上メニューボタンより操作してください<br /> エラーが発生した場合にはシステム部まで問い合わせください。<br />
-		システム部 TEL 011-000-0000
-
+		<div class="foot">
+				<h3>ログイン情報</h3>
+				<div class="login">
+					<p>社員名 : <%=name %></p>&emsp;&emsp;
+					<p>社員番号 : <%=id %></p>
+				</div>
+				<hr style="width:100%; border-top: 1px dashed #8c8b8b;"/>
+			<div class="footmenu">
+				各種操作は右上メニューボタンより操作してください<br /> エラーが発生した場合には○○まで問い合わせください。<br />
+				システム部 TEL 011-000-0000
+			</div>
+		</div>
 	</footer>
 	<script src="js\aaa.js"></script>
 	<script src="js\script.js"></script>

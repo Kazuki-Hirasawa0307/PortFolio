@@ -148,6 +148,8 @@ if(role == 1){
 				<h5>送信前に入力内容を確認してください。</h5>
 				<input type="submit" value="送信" onclick="func1()"><br>
 			</form>
+				<a href="admin.jsp" class="aa">管理者ページへ</a>
+				<br /><br /><br />
 		</section>
 	</div>
 

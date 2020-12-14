@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import accountDAO.AccountFixDAO;
 import model.TimeListBean;
@@ -18,8 +19,12 @@ public class AccountFix extends HttpServlet {
 
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
-        rd.forward(request, response);
+		HttpSession session = request.getSession(true);
+		String message = "不正な操作です。再度ログインしてください。";
+		session.invalidate();
+        request.setAttribute("message", message);
+		RequestDispatcher dispatcher =  request.getRequestDispatcher("login.jsp");
+    	dispatcher.forward(request, response);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

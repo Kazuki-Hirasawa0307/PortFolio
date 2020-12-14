@@ -26,6 +26,10 @@ public class TimeListBean {
     private int days;
     private String startstatus;
     private String finishstatus;
+    private String beforesstatus;
+    private String beforefstatus;
+    private int beforestatus;
+
     private String week;
     private int param;
 
@@ -157,6 +161,24 @@ public class TimeListBean {
 	ArrayList<Integer> dmonth;
 
 
+	public int getBeforestatus() {
+		return beforestatus;
+	}
+	public void setBeforestatus(int beforestatus) {
+		this.beforestatus = beforestatus;
+	}
+	public String getBeforesstatus() {
+		return beforesstatus;
+	}
+	public void setBeforesstatus(String beforesstatus) {
+		this.beforesstatus = beforesstatus;
+	}
+	public String getBeforefstatus() {
+		return beforefstatus;
+	}
+	public void setBeforefstatus(String beforefstatus) {
+		this.beforefstatus = beforefstatus;
+	}
 	public ArrayList<Integer> getDmonth() {
 		return dmonth;
 	}

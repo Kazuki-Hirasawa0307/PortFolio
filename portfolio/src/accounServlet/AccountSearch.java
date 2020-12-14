@@ -73,13 +73,13 @@ public class AccountSearch extends HttpServlet {
 			request.setAttribute("hyouzyun", hyouzyun);
 			request.setAttribute("resident", resident);
 
-			RequestDispatcher rd = request.getRequestDispatcher("fix.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("admin-empFix.jsp");
 			rd.forward(request, response);
 
 		} else {
 			String message = "名前又はIDが誤っています。";
 			request.setAttribute("message", message);
-			RequestDispatcher rd = request.getRequestDispatcher("/emplofix.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/admin-empInput.jsp");
 			rd.forward(request, response);
 		}
 	}

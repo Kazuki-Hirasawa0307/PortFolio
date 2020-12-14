@@ -22,8 +22,9 @@ public class Salary extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		if (session == null) { 												//セッションが切れていれば再度ログイン
-			RequestDispatcher dispatcher =
-					request.getRequestDispatcher("error.jsp");
+			String message = "セッション切れです。再度ログインしてください。";
+			request.setAttribute("message", message);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
 			dispatcher.forward(request, response);
 		} else {
 			try {
@@ -111,8 +112,9 @@ public class Salary extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		if (session == null) { 												//セッションが切れていれば再度ログイン
-			RequestDispatcher dispatcher =
-					request.getRequestDispatcher("error.jsp");
+			String message = "セッション切れです。再度ログインしてください。";
+			request.setAttribute("message", message);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
 			dispatcher.forward(request, response);
 		} else {
 			try {

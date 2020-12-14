@@ -15,7 +15,7 @@
 		<section id="content">
 			<h1>管理者ページ</h1>
 			<h2>
-				<a href="emplofix.jsp" class="aa">社員情報修正ページ</a>
+				<a href="admin-empInput.jsp" class="aa">社員情報修正ページ</a>
 			</h2>
 			<br />
 			<div>
@@ -23,7 +23,7 @@
 			</div>
 			<hr />
 			<h2>
-				<a href="register.jsp" class="aa">社員新規追加ページ</a>
+				<a href="admin-register.jsp" class="aa">社員新規追加ページ</a>
 			</h2>
 			<br />
 			<div>
@@ -31,7 +31,7 @@
 				<hr />
 			</div>
 			<h2>
-				<a href="http://localhost:8080/portfolio/AccountDayOff">社員の有給、欠勤入力フォーム</a>
+				<a href="http://localhost:8080/portfolio/AccountDayOff">社員の有給、欠勤承認フォーム</a>
 			</h2>
 			<br />
 			<div>

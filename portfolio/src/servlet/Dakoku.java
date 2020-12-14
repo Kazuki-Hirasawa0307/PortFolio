@@ -31,8 +31,10 @@ public class Dakoku extends HttpServlet {
 	    TimeListBean tb = new TimeListBean();
 		HttpSession session = request.getSession(false);
 		if(session == null) {													//セッションが切れていれば再度ログイン
+			String message = "セッション切れです。再度ログインしてください。";
+			request.setAttribute("message", message);
 	    	RequestDispatcher dispatcher =
-	    			request.getRequestDispatcher("error.jsp");
+	    			request.getRequestDispatcher("login.jsp");
 	    	dispatcher.forward(request, response);
 		}else {
 	    	String id = (String)session.getAttribute("id"); tb.setLoginId(id);	//セッションからID取得
@@ -62,10 +64,13 @@ public class Dakoku extends HttpServlet {
 		TimeListBean tb = new TimeListBean();							//ビーンインスタンス化
 		HttpSession session = request.getSession(false);				//セッション取得
 		if(session == null) {											//セッションが切れていれば再度ログイン
+			String message = "セッション切れです。再度ログインしてください。";
+			request.setAttribute("message", message);
 	    	RequestDispatcher dispatcher =
-	    			request.getRequestDispatcher("error.jsp");
+	    			request.getRequestDispatcher("login.jsp");
 	    	dispatcher.forward(request, response);
 		}else {
+			int status = (Integer)session.getAttribute("bstatus");
 	    	String id = (String)session.getAttribute("id"); tb.setLoginId(id);	//セッションからID取得
 		    LocalDateTime nowDateTime = LocalDateTime.now();					//時刻取得インスタンス化
 		    int fyear = nowDateTime.getYear(); tb.setFyear(fyear);				//現在年取得、セット
@@ -75,6 +80,18 @@ public class Dakoku extends HttpServlet {
 	      	int fminute = nowDateTime.getMinute(); tb.setFminute(fminute);		//現在分取得、セット
 	     	int fsecond = nowDateTime.getSecond(); tb.setFsecond(fsecond);		//現在状取得、セット
 	      	int param = 5; tb.setParam(param);									//パラム5セット
+	      	if(status == 1) {
+	      		fday -= 1;	tb.setFday(fday);
+	      		fhour += 24;	tb.setFhour(fhour);
+	      		if(fday == 0) {
+	      			fday = tb.getDays();
+	      			fmonth -= 1;	tb.setFmonth(fmonth);
+	      			if(fmonth == 0) {
+	      				fmonth = 12;	tb.setFmonth(fmonth);
+	      				fyear -= 1;		tb.setFyear(fyear);
+	      			}
+	      		}
+	      	}
 	    	@SuppressWarnings("unused")
 			TimeInsertDAO finishTimeInsert = new TimeInsertDAO(tb);			//上記時間を退勤時間DBへセット
 

@@ -27,7 +27,9 @@ public class TimeList extends HttpServlet {
 		TimeListBean tb = new TimeListBean(); //ビーン取得
 		HttpSession session = request.getSession(false); //session取得
 		if (session == null) { //セッションが切れていれば再度ログイン
-			RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
+			String message = "セッション切れです。再度ログインしてください。";
+			request.setAttribute("message", message);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
 			dispatcher.forward(request, response);
 		} else {
 			try {
@@ -79,16 +81,16 @@ public class TimeList extends HttpServlet {
 			request.setAttribute("workday", returnTl.getWorkday());
 
 			//ーーーーーーーーーーjspへ遷移ーーーーーーーーーーーーーーーーーーーーー
-			int role = (Integer)session.getAttribute("role");
-	    	request.setAttribute("role", role);
+			request.setAttribute("role", (Integer)session.getAttribute("role"));
+	    	request.setAttribute("name", (String)session.getAttribute("name"));
+	    	request.setAttribute("id", (String)session.getAttribute("id"));
 
 			}catch(Exception e) {
-//				System.out.println(e);
-//				String message = "不正な操作です。再度ログインしてください。";
-//				session.invalidate();
-//		        request.setAttribute("message", message);
-//				RequestDispatcher dispatcher =  request.getRequestDispatcher("login.jsp");
-//		    	dispatcher.forward(request, response);
+				System.out.println(e);
+				String message = "不正な操作です。再度ログインしてください。";
+		        request.setAttribute("message", message);
+				RequestDispatcher dispatcher =  request.getRequestDispatcher("login.jsp");
+		    	dispatcher.forward(request, response);
 			}
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("timelist.jsp");

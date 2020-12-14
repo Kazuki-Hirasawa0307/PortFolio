@@ -32,9 +32,10 @@ public class Top extends HttpServlet {
     	TimeListBean tb = new TimeListBean(); 								//ビーン取得
 		HttpSession session = request.getSession(false);					//session取得
 		if(session == null) {												//セッションが切れていれば再度ログイン
-	    	RequestDispatcher dispatcher =
-	    			request.getRequestDispatcher("error.jsp");
-	    	dispatcher.forward(request, response);
+			String message = "セッション切れです。再度ログインしてください。";
+			request.setAttribute("message", message);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+			dispatcher.forward(request, response);
 		}else {
 			try {
 		    	String id = (String)session.getAttribute("id");						//loginIDを取得
@@ -127,13 +128,13 @@ public class Top extends HttpServlet {
 			}catch(Exception e) {												//本処理でエラーで出たら再度ログインへ
 				System.out.println(e);
 				String message = "不正な操作です。再度ログインしてください。";
-//				session.invalidate();
 		        request.setAttribute("message", message);
 				RequestDispatcher dispatcher =  request.getRequestDispatcher("login.jsp");
 		    	dispatcher.forward(request, response);
 			}
-	    	int role = (Integer)session.getAttribute("role");					//管理者権限を取得しjspへ転送
-	    	request.setAttribute("role", role);
+			request.setAttribute("role", (Integer)session.getAttribute("role"));
+	    	request.setAttribute("name", (String)session.getAttribute("name"));
+	    	request.setAttribute("id", (String)session.getAttribute("id"));
 	    	RequestDispatcher dispatcher =  request.getRequestDispatcher("top.jsp");
 	    	dispatcher.forward(request, response);								//jspへ遷移
 		}

@@ -21,7 +21,12 @@ public class AccountRegister extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    	HttpSession session = request.getSession(true);
+		String message = "不正な操作です。再度ログインしてください。";
+		session.invalidate();
+        request.setAttribute("message", message);
+		RequestDispatcher dispatcher =  request.getRequestDispatcher("login.jsp");
+    	dispatcher.forward(request, response);
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

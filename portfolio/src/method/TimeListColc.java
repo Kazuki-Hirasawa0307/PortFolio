@@ -46,9 +46,7 @@ public class TimeListColc {
 
     	for(int i = 0; i < days; i++){								//当月の日数回繰り返し
     		finishHour = finishhour.get(i);							//退勤時間が出勤時間より小さければ24時間プラス
-    		if(finishHour  < starthour.get(i)){
-    			finishHour += 24;
-    		}
+
     		dayHour = finishHour - starthour.get(i) - 1;			//1日の勤務時間を算出し休憩時間の1時間分マイナス
     		if(dayHour < 0){										//1日の勤務時間がマイナスになったら0にする
     			dayHour = 0;
@@ -57,8 +55,9 @@ public class TimeListColc {
     		if(dayMinute < 0){										//分がマイナスになった場合に1時間マイナスし60分プラス
     			dayMinute += 60;
     			dayHour -= 1;
-    			if(dayHour < 0){									//1日の勤務時間がマイナスの場合に24時間プラス
-    				dayHour += 24;
+    			if(dayHour < 0){									//1日の勤務時間がマイナスの場合に0にする
+    				dayHour = 0;
+    				dayMinute = 0;
     			}
     		}
     		dayzHour = dayHour - 8;									//1日の勤務時間から8時間引いて残業時間の算出

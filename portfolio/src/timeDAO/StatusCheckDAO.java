@@ -46,10 +46,9 @@ public class StatusCheckDAO {
 				} else {
 					status = "error";
 				}
-		        System.out.println(day + "s");
-
 
 				tlb.setStartstatus(status);
+
 			} else if (param == 7) {
 				String sql = "SELECT * FROM " + tlb.getLoginId()
 						+ "finishtime WHERE year = ? AND month = ? AND day = ? AND hour IS NOT NULL";
@@ -69,9 +68,73 @@ public class StatusCheckDAO {
 					status = "error";
 				}
 				tlb.setFinishstatus(status);
-		        System.out.println(day + "f");
 
 			}
+
+			if (param == 8) {
+				String sql = "SELECT * FROM " + tlb.getLoginId()
+						+ "starttime WHERE year = ? AND month = ? AND day = ? AND hour IS NOT NULL";
+				ps = conn.prepareStatement(sql);
+				int beforey = tlb.getSyear();
+				int beforem = tlb.getSmonth();
+				int befored = tlb.getSday() - 1;
+				if(befored == 0) {
+					befored = tlb.getDays();
+					beforem -= 1;
+					if(beforem == 0) {
+						beforey -= 1;
+					}
+				}
+				ps.setInt(1, beforey);
+				ps.setInt(2, beforem);
+				ps.setInt(3, befored);
+				rs = ps.executeQuery();
+				while (rs.next()) {
+					day = rs.getInt("day");
+				}
+				if (day == 0) {
+					status = "nowork";
+				} else if (day == befored) {
+					status = "worked";
+				} else {
+					status = "error";
+				}
+
+				tlb.setBeforesstatus(status);
+
+			}
+			if (param == 9) {
+				String sql = "SELECT * FROM " + tlb.getLoginId()
+						+ "finishtime WHERE year = ? AND month = ? AND day = ? AND hour IS NOT NULL";
+				ps = conn.prepareStatement(sql);
+				int beforey = tlb.getSyear();
+				int beforem = tlb.getSmonth();
+				int befored = tlb.getSday() - 1;
+				if(befored == 0) {
+					befored = tlb.getDays();
+					beforem -= 1;
+					if(beforem == 0) {
+						beforey -= 1;
+					}
+				}
+				ps.setInt(1, beforey);
+				ps.setInt(2, beforem);
+				ps.setInt(3, befored);
+				rs = ps.executeQuery();
+				while (rs.next()) {
+					day = rs.getInt("day");
+				}
+				if (day == 0) {
+					status = "nowork";
+				} else if (day == befored) {
+					status = "worked";
+				} else {
+					status = "error";
+				}
+
+				tlb.setBeforefstatus(status);
+			}
+
 
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -48,16 +48,12 @@ int kouzyo = kenkou + kaigo + nenkin + koyou + syotoku + resident + tisoum + abs
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>勤怠管理 打刻</title>
-<link rel="stylesheet" href="css\style.css">
-<link rel="stylesheet" href="css\styleDakoku.css">
-<link rel="stylesheet" href="css\styleseihai.css">
 <link rel="stylesheet" href="css\saraly.css">
-
 </head>
 
 <body>
 	<header>
-		<img src="img\ac35b9adf4b7ba40f15161a3b72ae372.jpg" class="topPic">
+		<img src="img\payslip.jpg" class="topPic">
 		<div class="mask" id="mask"></div>
 		<a class="menuButton" id="menuButton">
 			<div></div>
@@ -68,24 +64,19 @@ int kouzyo = kenkou + kaigo + nenkin + koyou + syotoku + resident + tisoum + abs
 	<div>
 		<aside>
 			<h3>社内お知らせ</h3>
-			<div class="dadada">
-				<p class="kouhou">今週の広報</p>
+			<div class="kouhou">
+				<p>広報</p>
 				<a href=""> <img src="img\21023010-広報-wordcloud-のイラスト.jpg"
 					alt="" class="kaoPic"></a>
 			</div>
-			<hr width="80%" align="left">
 
-			<div class="dadadada">
-				<p class="daihyo">今月の社内表彰</p>
+			<div class="hyousyou">
+				<p>社内表彰</p>
 				<a href=""> <img src="img\20170703_07_01.jpg" alt=""
 					class="kaoPic"></a>
 			</div>
-			<hr width="80%" align="left">
-			<div class="dadada">
-				<p class="daihyo">代表より皆様へ</p>
-				<a href=""> <img src="img\IMGP2187.JPG" alt="" class="kaoPic"></a>
-			</div>
 		</aside>
+
 		<main>
 			<h1>給与明細</h1>
 			<hr />
@@ -100,18 +91,21 @@ int kouzyo = kenkou + kaigo + nenkin + koyou + syotoku + resident + tisoum + abs
 				月分
 			</h3>
 			<hr />
+
+			<!--  -->
 			<form action="Salary" method="post">
 				<select name="displaymonth">
-<%
-for(int i = 0; i < dmonth.size(); i++){
-%>
+					<%
+					for(int i = 0; i < dmonth.size(); i++){
+					%>
 					<option value=<%=dmonth.get(i) %>><%=year%>年<%=dmonth.get(i) %>月分</option>
-<%
-}
-%>
+					<%
+					}
+					%>
 				</select>
 				<input type="submit" value="表示" />
 			</form>
+
 			<table border="1" class="sa">
 				<tr>
 					<th rowspan="4" style="width: 25px;">勤怠</th>
@@ -219,6 +213,7 @@ for(int i = 0; i < dmonth.size(); i++){
 					<th><%=kouzyo%> 円</th>
 				</tr>
 			</table>
+
 			<br />
 			<table border="1" class="sa">
 				<tr>
@@ -261,10 +256,18 @@ for(int i = 0; i < dmonth.size(); i++){
 		</nav>
 	</div>
 	<footer>
-		<hr />
-		各種操作は右上メニューボタンより操作してください<br /> エラーが発生した場合にはシステム部まで問い合わせください。<br />
-		システム部 TEL 011-000-0000
-
+		<div class="foot">
+			<h3>ログイン情報</h3>
+			<div class="login">
+				<p>社員名 : <%=name%></p>&emsp;&emsp;
+				<p>社員番号 : <%=id%></p>
+			</div>
+			<hr style="width: 100%; border-top: 1px dashed #8c8b8b;" />
+			<div class="footmenu">
+				各種操作は右上メニューボタンより操作してください<br /> エラーが発生した場合には○○まで問い合わせください。<br />
+				システム部 TEL 011-000-0000
+			</div>
+		</div>
 	</footer>
 	<script src="js\script.js"></script>
 </body>

@@ -15,11 +15,13 @@
 		<section id="content">
 			<form action="AccountRegister" method="post">
 				<h1>社員情報新規登録ページ</h1>
-				<h3 style="color:red">注意事項</h3>
+				<h3 style="color: red">注意事項</h3>
 				<h5>全ての項目を入力してください。</h5>
 				<h5>名前は姓と名の間に全角の空白を入れてください。</h5>
 				<h5>IDとPasswordは半角英数字で入力してください。</h5>
-				<h5>標準報酬月額は確定してない場合は0と記入し、保険者より<br />「標準報酬決定通知書」が届き次第更新してください。</h5>
+				<h5>
+					標準報酬月額は確定してない場合は0と記入し、保険者より<br />「標準報酬決定通知書」が届き次第更新してください。
+				</h5>
 				<h5>住民税額が不明な場合は0と記入し、納付書が手元に届き次第更新してください。</h5>
 
 
@@ -35,11 +37,13 @@
 						</tr>
 						<tr>
 							<th style="height: 74px;">LoginID</th>
-							<td><input type="text" name="loginId" required onInput="checkForm(this)"></td>
+							<td><input type="text" name="loginId" required
+								onInput="checkForm(this)"></td>
 						</tr>
 						<tr>
 							<th style="height: 74px;">Password</th>
-							<td><input type="text" name="pass" required onInput="checkForm(this)"></td>
+							<td><input type="text" name="pass" required
+								onInput="checkForm(this)"></td>
 						</tr>
 						<tr>
 							<th style="height: 74px;">メールアドレス</th>
@@ -47,7 +51,7 @@
 						</tr>
 						<tr>
 							<th style="height: 74px;">生年月日(数字のみの8桁で入力)</th>
-							<td><input type="number" name="birthday" required> </td>
+							<td><input type="number" name="birthday" required></td>
 						</tr>
 						<tr>
 							<th style="height: 74px;">登録ステータス</th>
@@ -94,10 +98,13 @@
 				<h5>送信前に入力内容を確認してください。</h5>
 				<input type="submit" value="送信" onclick="func1()"><br>
 			</form>
+			<a href="admin.jsp" class="aa">管理者ページへ</a> <br />
+			<br />
+			<br />
 		</section>
 	</div>
 
-    <script type="text/javascript">
+	<script type="text/javascript">
 
     const func1 = () => {
       alert('社員情報を登録しました。');
