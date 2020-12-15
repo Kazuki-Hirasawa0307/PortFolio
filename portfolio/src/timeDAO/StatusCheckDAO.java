@@ -30,7 +30,7 @@ public class StatusCheckDAO {
 			st = conn.createStatement();
 			if (param == 6) {
 				String sql = "SELECT * FROM " + tlb.getLoginId()
-						+ "starttime WHERE year = ? AND month = ? AND day = ? AND hour IS NOT NULL";
+						+ "timelist WHERE year = ? AND month = ? AND day = ? AND starthour IS NOT NULL";
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, tlb.getSyear());
 				ps.setInt(2, tlb.getSmonth());
@@ -51,7 +51,7 @@ public class StatusCheckDAO {
 
 			} else if (param == 7) {
 				String sql = "SELECT * FROM " + tlb.getLoginId()
-						+ "finishtime WHERE year = ? AND month = ? AND day = ? AND hour IS NOT NULL";
+						+ "timelist WHERE year = ? AND month = ? AND day = ? AND finishhour IS NOT NULL";
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, tlb.getSyear());
 				ps.setInt(2, tlb.getSmonth());
@@ -73,7 +73,7 @@ public class StatusCheckDAO {
 
 			if (param == 8) {
 				String sql = "SELECT * FROM " + tlb.getLoginId()
-						+ "starttime WHERE year = ? AND month = ? AND day = ? AND hour IS NOT NULL";
+						+ "timelist WHERE year = ? AND month = ? AND day = ? AND starthour IS NOT NULL";
 				ps = conn.prepareStatement(sql);
 				int beforey = tlb.getSyear();
 				int beforem = tlb.getSmonth();
@@ -105,7 +105,7 @@ public class StatusCheckDAO {
 			}
 			if (param == 9) {
 				String sql = "SELECT * FROM " + tlb.getLoginId()
-						+ "finishtime WHERE year = ? AND month = ? AND day = ? AND hour IS NOT NULL";
+						+ "timelist WHERE year = ? AND month = ? AND day = ? AND finishhour IS NOT NULL";
 				ps = conn.prepareStatement(sql);
 				int beforey = tlb.getSyear();
 				int beforem = tlb.getSmonth();

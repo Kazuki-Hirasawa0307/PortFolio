@@ -158,9 +158,18 @@ public class TimeListBean {
 	private String message;
 
 	private int displaymonth;
-	ArrayList<Integer> dmonth;
+
+	private ArrayList<Integer> dmonth;
+	private ArrayList<Integer> dyear;
 
 
+
+	public ArrayList<Integer> getDyear() {
+		return dyear;
+	}
+	public void setDyear(ArrayList<Integer> dyear) {
+		this.dyear = dyear;
+	}
 	public int getBeforestatus() {
 		return beforestatus;
 	}

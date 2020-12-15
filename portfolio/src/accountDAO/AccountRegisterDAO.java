@@ -48,15 +48,10 @@ public class AccountRegisterDAO {
 					System.out.println("新規社員情報登録失敗");
 				}
 			}else if(param == 5) {
-				String sql = "CREATE TABLE "+ ab.getLoginId() +"starttime(year INT, month INT, day INT,  hour INT, minute INT, second INT, week VARCHAR(10))";
+				String sql = "CREATE TABLE "+ ab.getLoginId() +"timelist(year INT, month INT, day INT,  starthour INT, startminute INT, finishhour INT, finishminute INT, week VARCHAR(10))";
 				PreparedStatement ps = con.prepareStatement(sql);
 				ps.executeUpdate();
-					System.out.println("新規社員始業時間テーブル作成完了");
-			}else if(param == 6) {
-				String sql = "CREATE TABLE "+ ab.getLoginId() +"finishtime(year INT, month INT, day INT,  hour INT, minute INT, second INT, week VARCHAR(10))";
-				PreparedStatement ps = con.prepareStatement(sql);
-				ps.executeUpdate();
-					System.out.println("新規社員終業時間テーブル作成完了");
+					System.out.println("新規社員時間テーブル作成完了");
 			}else if(param == 7) {
 				String sql = "CREATE TABLE "+ ab.getLoginId() +"account(year INT, month INT,  salary INT, workday INT,  worktime INT, overtime INT,dayoffworktime INT, dayoffworkday INT,"
 						+ "nigthworktime INT, lateday INT, latetime INT, paidvacation INT, absence INT)";

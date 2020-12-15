@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import accountDAO.AccountDAO;
 import method.SalaryColc;
 import method.method;
 import model.TimeListBean;
@@ -64,18 +65,16 @@ public class Top extends HttpServlet {
 
 		 	    tb.setWeek(week);													//ビーンに当月1日の曜日をセット
 		 	    method.monthday(tb);												//当月の日数を取得、ビーンへセット
-				session.setAttribute("days",tb.getDays()); 										//セッションへ今日の日セット
-				session.setAttribute("smonth",smonth);										//セッションへ今日の月セット
-				session.setAttribute("syear",syear); 										//セッションへ今日の年セット
+				session.setAttribute("days",tb.getDays()); 							//セッションへ今日の日セット
+				session.setAttribute("smonth",smonth);								//セッションへ今日の月セット
+				session.setAttribute("syear",syear); 								//セッションへ今日の年セット
+				session.setAttribute("sday",sday); 								//セッションへ今日の日セット
 
 
 		//ーーーーーーーーーーーーDBに現在月情報が無い場合にはDB更新ーーーーーーーーーーーーー
 		    	int param = 2; tb.setParam(param);									//パラム2をセット
 		    	@SuppressWarnings("unused")
-				MonthUpdateDAO startMonthUpdate = new MonthUpdateDAO(tb);			//出勤時間一覧DBの当月分更新
-		    	param = 3; tb.setParam(param);										//パラム3をセット
-		    	@SuppressWarnings("unused")
-				MonthUpdateDAO finishMonthUpdate = new MonthUpdateDAO(tb);		//退勤時間一覧DBの当月分更新
+				MonthUpdateDAO MonthUpdate = new MonthUpdateDAO(tb);			//出勤時間一覧DBの当月分更新
 
 				int salaryyear = syear;
 				int salarymonth = smonth - 1;										//先月
@@ -112,13 +111,14 @@ public class Top extends HttpServlet {
 						tb.setAbsence(absence);
 						param = 0;	tb.setParam(param);									//パラム0をビーンにセット
 						@SuppressWarnings("unused")
-						SalaryTimeListDAO startTimeList = new SalaryTimeListDAO(tb); 	//DAOで先月の出勤時間一覧をビーンにセット
-						param = 1;	tb.setParam(param);									//パラム1をビーンにセット
-						@SuppressWarnings("unused")
-						SalaryTimeListDAO finishTimeList = new SalaryTimeListDAO(tb);	//DAOで先月の退勤時間一覧をビーンにセット
+						SalaryTimeListDAO TimeList = new SalaryTimeListDAO(tb); 	//DAOで先月の出勤時間一覧をビーンにセット
 						if(tb.getSalarystartmonth() == salarymonth) {
 							@SuppressWarnings("unused")
 							SalaryColc now = new SalaryColc(tb);							//先月の出退勤時間から明細各項目計算
+							param = 3;
+							tb.setParam(param);
+							AccountDAO ad = new AccountDAO();
+							TimeListBean returnAb = ad.findAccount(tb);
 							param = 4; tb.setParam(param);
 							@SuppressWarnings("unused")
 							MonthUpdateDAO workMonthUpdate = new MonthUpdateDAO(tb);		//SalaryColcの値をDBへインサート

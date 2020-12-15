@@ -6,17 +6,14 @@ String name = (String) request.getAttribute("name");
 String id = (String) request.getAttribute("id");
 int role = (Integer) request.getAttribute("role");
 %>
-
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>勤怠管理 打刻</title>
 <link rel="stylesheet" href="css\dakoku.css">
 </head>
-
 <body>
 	<header>
 		<img src="img\dakoku.jpg" class="topPic">
@@ -32,22 +29,17 @@ int role = (Integer) request.getAttribute("role");
 			<h3>社内お知らせ</h3>
 			<div class="kouhou">
 				<p>広報</p>
-				<a href=""> <img src="img\21023010-広報-wordcloud-のイラスト.jpg"
-					alt="" class="kaoPic"></a>
+				<a href=""> <img src="img\21023010-広報-wordcloud-のイラスト.jpg" alt="" class="kaoPic"></a>
 			</div>
-
 			<div class="hyousyou">
 				<p>社内表彰</p>
-				<a href=""> <img src="img\20170703_07_01.jpg" alt=""
-					class="kaoPic"></a>
+				<a href=""> <img src="img\20170703_07_01.jpg" alt="" class="kaoPic"></a>
 			</div>
 		</aside>
 		<main>
 			<h1 class="title">打刻・退勤</h1>
 			<hr>
-
 			<div class="aaa">現在のステータス</div>
-
 			<%
 				String status = (String) request.getAttribute("status");
 			%>
@@ -70,19 +62,18 @@ int role = (Integer) request.getAttribute("role");
 			<%
 				}
 			%>
-
 			<div class="pp">現在時刻</div>
 			<div class="bodyB">
 				<div class="headerB">
 					<div id="iTime" class="time">
-						<img src="img\figure-0.png" width="80" height="120"><img
-							src="img\figure-1.png" width="80" height="120"><img
-							src="img\figure-colon.png" width="10" height="120"><img
-							src="img\figure-2.png" width="80" height="120"><img
-							src="img\figure-3.png" width="80" height="120"><img
-							src="img\figure-colon.png" width="10" height="120"><img
-							src="img\figure-4.png" width="80" height="120"><img
-							src="img\figure-5.png" width="80" height="120">
+						<img src="img\figure-0.png" width="80" height="120">
+						<img src="img\figure-1.png" width="80" height="120">
+						<img src="img\figure-colon.png" width="10" height="120">
+						<img src="img\figure-2.png" width="80" height="120">
+						<img src="img\figure-3.png" width="80" height="120">
+						<img src="img\figure-colon.png" width="10" height="120">
+						<img src="img\figure-4.png" width="80" height="120">
+						<img src="img\figure-5.png" width="80" height="120">
 					</div>
 				</div>
 				<div class="mainB">
@@ -142,8 +133,6 @@ int role = (Integer) request.getAttribute("role");
 						<%
 							}
 						%>
-
-
 					</div>
 				</div>
 			</div>
@@ -180,7 +169,7 @@ int role = (Integer) request.getAttribute("role");
 			</div>
 		</div>
 	</footer>
-	<script src="js\aaa.js"></script>
+	<script src="js\dakoku.js"></script>
 	<script src="js\script.js"></script>
 </body>
 

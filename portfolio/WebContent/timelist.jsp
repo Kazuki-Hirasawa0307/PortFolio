@@ -43,6 +43,11 @@ String nenkin = (String) request.getAttribute("nenkin");
 int role = (Integer) request.getAttribute("role");
 String name = (String) request.getAttribute("name");
 String id = (String) request.getAttribute("id");
+@SuppressWarnings("unchecked")ArrayList<Integer> dmonth = (ArrayList<Integer>)request.getAttribute("dmonth");
+int year = (Integer) request.getAttribute("year");
+int month = (Integer) request.getAttribute("month");
+@SuppressWarnings("unchecked")ArrayList<Integer> dyear = (ArrayList<Integer>)request.getAttribute("dyear");
+
 %>
 
 
@@ -89,6 +94,25 @@ String id = (String) request.getAttribute("id");
 			<body bgcolor="#ffffff">
 
 				<%--  ーーーーーーーーーーー｜勤務時間表｜－－－ーー－－－－－－－ --%>
+
+					<form action="timelist" method="post">
+				<div class="pulldown">
+						<div class="cp_ipselect cp_sl03">
+							<select name="displaymonth">
+								<%
+									for (int i = 0; i < dmonth.size(); i++) {
+								%>
+								<option value=<%=dmonth.get(i)%>><%=dyear.get(i)%>年<%=dmonth.get(i)%>月分
+								</option>
+								<%
+									}
+								%>
+							</select>
+						</div>
+						<input type="submit" value="表示" class="button" />
+					</div>
+			</form>
+
 				<TABLE border="1">
 					<tr>
 						<th><%=smonth%>月</th>

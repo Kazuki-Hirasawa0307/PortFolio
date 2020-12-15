@@ -87,16 +87,11 @@ public class AccountSearch extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String loginId = request.getParameter("loginId");
 		String pass = request.getParameter("pass");
-
-
-		// login.jspから受け取ったログインIDとpassをビーンズにセット
 		TimeListBean ab = new TimeListBean();
 		ab.setLoginId(loginId);
 		ab.setPass(pass);
 		int param = 2;
 		ab.setParam(param);
-		// アカウントの有無を検索
-		// 検索したアカウント情報を取得
 		AccountDAO ad = new AccountDAO();
 		TimeListBean returnAb = ad.findAccount(ab);
 		if (returnAb != null) {
@@ -112,14 +107,9 @@ public class AccountSearch extends HttpServlet {
 
 				RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
 				rd.forward(request, response);
-			} else if(role == 1){
-				// セッションにアカウント情報＆ロールを登録
+			} else if (role == 1) {
 				session.setAttribute("account", returnAb);
-
-//				RequestDispatcher rd = request.getRequestDispatcher("/topj");
-//				rd.forward(request, response);
-		    	response.sendRedirect("http://localhost:8080/portfolio/topj");	//ステータスチェックサーブレットへ処理遷移
-
+				response.sendRedirect("http://localhost:8080/portfolio/topj");
 			}
 
 		} else {

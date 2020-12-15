@@ -96,7 +96,7 @@ int role = (Integer) request.getAttribute("role");
 
 			<div class="menumenu">
 				<a href="http://localhost:8080/portfolio/topj"> <img
-					src="img\salary.jpg" alt="" class="menupic"></a>
+					src="img\smaillsalary.jpg" alt="" class="menupic"></a>
 				<div class="menu2">
 					<a href="http://localhost:8080/portfolio/topj">給与明細</a>
 					<p>

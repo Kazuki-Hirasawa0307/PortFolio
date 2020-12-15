@@ -44,7 +44,8 @@ main {
 }
 
 main h3 {
-	line-height: 45px
+	line-height: 45px;
+	margin-left:50px;
 }
 
 main ul {
@@ -135,40 +136,6 @@ footer {
 	margin: auto;
 	text-align: center;
 	width: 150px;
-}
-
-.daihyo {
-	margin: 0;
-}
-
-.dadada {
-	position: relative;
-	margin-bottom: 30px;
-	margin-top: 30px;
-}
-
-.dadadada {
-	position: relative;
-	margin-bottom: 30px;
-	margin-top: 30px;
-}
-
-.dadada p {
-	position: absolute; /*絶対配置*/
-	color: rgb(0, 0, 0); /*文字は白に*/
-	font-weight: bold; /*太字に*/
-	/* font-size: 2em; */
-	top: 00%;
-	left: 10%;
-}
-
-.dadadada p {
-	position: absolute; /*絶対配置*/
-	color: rgb(255, 255, 255); /*文字は白に*/
-	font-weight: bold; /*太字に*/
-	/* font-size: 2em; */
-	top: 0%;
-	left: 10%;
 }
 
 
@@ -337,3 +304,86 @@ table tr:nth-child(odd) {
 .sa {
 	margin: auto;
 }
+
+.cp_ipselect {
+	overflow: hidden;
+	text-align: center;
+	width: 160px;
+	height:38px;
+}
+
+.cp_ipselect select {
+	padding-right: 1em;
+	cursor: pointer;
+	text-indent: 0.01px;
+	text-overflow: ellipsis;
+	border: none;
+	outline: none;
+	background: transparent;
+	background-image: none;
+	box-shadow: none;
+	-webkit-appearance: none;
+	appearance: none;
+width: 160px;
+	height:38px;
+	}
+
+.cp_ipselect select::-ms-expand {
+	display: none;
+}
+
+.cp_ipselect.cp_sl03 {
+	position: relative;
+	border-radius: 2px;
+	border: 2px solid #555555;
+	background: #ffffff;
+}
+
+.cp_ipselect.cp_sl03::before {
+	position: absolute;
+	top: 0.8em;
+	right: 0.8em;
+	height: 0;
+	padding: 0;
+	content: '';
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 6px solid #555555;
+	pointer-events: none;
+}
+
+.cp_ipselect.cp_sl03 select {
+	padding: 8px 38px 8px 8px;
+	color: #555555;
+}
+
+.button {
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 14pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 4px 4px;   /* 余白       */
+  color         : #555555;     /* 背景色     */
+  background    : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  border        : 2px solid #555555;    /* 枠の指定 */
+}
+.button:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  background    : #555555;     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+}
+
+.pulldown{
+	margin:auto;
+	text-align:center;
+}
+.pulldown form{
+	margin-left:10%;
+}
+.pulldown h3{
+	margin-left:19%;
+}
+

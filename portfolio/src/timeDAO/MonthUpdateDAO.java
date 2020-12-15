@@ -30,60 +30,14 @@ public class MonthUpdateDAO {
 		try {
 			conn = DriverManager.getConnection(jdbcUrl, jdbcId, jdbcPass);
 			if (param == 2) {
-				sql = "SELECT * FROM " + tb.getLoginId() + "starttime WHERE month IS NOT NULL";
+				sql = "SELECT * FROM " + tb.getLoginId() + "timelist WHERE month IS NOT NULL";
 				ps = conn.prepareStatement(sql);
 				rs = ps.executeQuery();
 				while (rs.next()) {
 					DBmonth = rs.getInt("month");
 				}
 				if (DBmonth != nowmonth) {
-					sql = "INSERT INTO " + tb.getLoginId() + "starttime (year, month, day, week) VALUES (?, ?, ?, ?)";
-					ps = conn.prepareStatement(sql);
-					for (int i = 0; i < days; i++) {
-						ps.setInt(1, tb.getSyear());
-						ps.setInt(2, tb.getSmonth());
-						ps.setInt(3, (i + 1));
-						if (week == "MONDAY") {
-							week = "月";
-							ps.setString(4, week);
-							week = "TUESDAY";
-						} else if (week == "TUESDAY") {
-							week = "火";
-							ps.setString(4, week);
-							week = "WEDNESDAY";
-						} else if (week == "WEDNESDAY") {
-							week = "水";
-							ps.setString(4, week);
-							week = "THURSDAY";
-						} else if (week == "THURSDAY") {
-							week = "木";
-							ps.setString(4, week);
-							week = "FRIDAY";
-						} else if (week == "FRIDAY") {
-							week = "金";
-							ps.setString(4, week);
-							week = "SATURDAY";
-						} else if (week == "SATURDAY") {
-							week = "土";
-							ps.setString(4, week);
-							week = "SUNDAY";
-						} else if (week == "SUNDAY") {
-							week = "日";
-							ps.setString(4, week);
-							week = "MONDAY";
-						}
-						ps.executeUpdate();
-					}
-				}
-			} else if (param == 3) {
-				sql = "SELECT * FROM " + tb.getLoginId() + "finishtime WHERE month IS NOT NULL";
-				ps = conn.prepareStatement(sql);
-				rs = ps.executeQuery();
-				while (rs.next()) {
-					DBmonth = rs.getInt("month");
-				}
-				if (DBmonth != nowmonth) {
-					sql = "INSERT INTO " + tb.getLoginId() + "finishtime (year, month, day, week) VALUES (?, ?, ?, ?)";
+					sql = "INSERT INTO " + tb.getLoginId() + "timelist (year, month, day, week) VALUES (?, ?, ?, ?)";
 					ps = conn.prepareStatement(sql);
 					for (int i = 0; i < days; i++) {
 						ps.setInt(1, tb.getSyear());
@@ -124,7 +78,8 @@ public class MonthUpdateDAO {
 			} else if (param == 4) {
 				System.out.println("ng");
 				sql = "INSERT INTO " + tb.getLoginId() + "account(year, month, workday, worktime, overtime, "
-						+ "houteitime, hougaitime, dayoffworkday, lateday, latetime, shinya, paidvacation, absence) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+						+ "houteitime, hougaitime, dayoffworkday, lateday, latetime, shinya, paidvacation, absence,base,"
+						+ "position,qualify,family,transport,home,hyozyun,resident,yearmonth) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?,?,?)";
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, tb.getSalaryyear());
 				ps.setInt(2, tb.getSalarymonth());
@@ -139,6 +94,15 @@ public class MonthUpdateDAO {
 				ps.setInt(11, tb.getNightworktime());
 				ps.setInt(12, tb.getPaidvacation());
 				ps.setInt(13, tb.getAbsence());
+				ps.setInt(14, tb.getBase());
+				ps.setInt(15, tb.getPosition());
+				ps.setInt(16, tb.getQualify());
+				ps.setInt(17, tb.getFamily());
+				ps.setInt(18, tb.getTransport());
+				ps.setInt(19, tb.getHome());
+				ps.setInt(20, tb.getHyouzyun());
+				ps.setInt(21, tb.getResident());
+				
 				ps.executeUpdate();
 
 			}

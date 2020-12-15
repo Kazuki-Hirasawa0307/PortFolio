@@ -4,13 +4,13 @@ import model.TimeListBean;
 
 public class SalaryTotal {
 
-	public  TimeListBean Total(TimeListBean returnSalary,TimeListBean returnAb,TimeListBean tb) {
+	public  TimeListBean Total(TimeListBean returnSalary,TimeListBean tb) {
 		TimeListBean returnTotal = new TimeListBean();
 
-		int zsalary = returnAb.getBase() / 170 * 125 / 100;					//残業時給・法定外休日時給
-		int basesalary = returnAb.getBase() / 170;								//時給
-		int shinyabase = returnAb.getBase() / 170 * 25 / 100;					//深夜割増給
-		int houteisalary = returnAb.getBase() / 170 * 135 / 100;				//法定休日時給
+		int zsalary = returnSalary.getBase() / 170 * 125 / 100;					//残業時給・法定外休日時給
+		int basesalary = returnSalary.getBase() / 170;								//時給
+		int shinyabase = returnSalary.getBase() / 170 * 25 / 100;					//深夜割増給
+		int houteisalary = returnSalary.getBase() / 170 * 135 / 100;				//法定休日時給
 
 		int overtime = returnSalary.getOvertime();								//残業時間(*10000)取得
 		int overh = overtime / 10000;											//残業時間取得
@@ -52,20 +52,27 @@ public class SalaryTotal {
 		String workwork = (workh + " : " + workm);								//勤務時間文字列化
 		int absencemoney = returnSalary.getAbsence() * basesalary * 8;			//欠勤控除計算
 
-		int total = overmoney + houteimoney + hougaimoney + shinyamoney + returnAb
-				.getBase() +returnAb.getPosition() + returnAb.getTransport() + returnAb.
-				getFamily()+returnAb.getHome() + returnAb.getQualify();			//総支給計算
+		int total = overmoney + houteimoney + hougaimoney + shinyamoney + returnSalary
+				.getBase() +returnSalary.getPosition() + returnSalary.getTransport() + returnSalary.
+				getFamily()+returnSalary.getHome() + returnSalary.getQualify();			//総支給計算
 
 //		System.out.println(shinyamoney);
 
 
-		int[] hoken = method.SocialInsurance(returnAb.getHyouzyun());		//SocialInsuranceメソッドで社会保険額を計算しhoken配列に格納
+		int[] hoken = method.SocialInsurance(returnSalary.getHyouzyun());		//SocialInsuranceメソッドで社会保険額を計算しhoken配列に格納
 		int nenkin = hoken[0];												//厚生年金額取得
 		int kenkou = hoken[1];												//健康保険額取得
 		int kaigo = hoken[2] - kenkou;										//介護保険額計算
+		String now1 = String.valueOf(returnSalary.getYear()) + String.valueOf
+				(returnSalary.getMonth()) + String.valueOf(tb.getSday());
+		int now2 = Integer.parseInt(now1);
+		int old = now2 - returnSalary.getBirthday();
+		if(old < 400000) {
+			kaigo = 0;
+		}
 		int koyou = hoken[3];												//雇用保険額取得
 		int tax = total - nenkin - kenkou - kaigo - koyou
-				- latemoney - returnAb.getTransport() - absencemoney;						//課税対象額計算
+				- latemoney - returnSalary.getTransport() - absencemoney;						//課税対象額計算
 		int syotoku = method.syotokuj(tax);								//syotokujメソッドから所得税取得
 
 //ーーーーーー以下returnTotalへ格納し、Top.javaへ戻すーーーーーーーーーーー

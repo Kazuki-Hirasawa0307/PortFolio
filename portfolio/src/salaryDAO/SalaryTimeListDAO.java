@@ -31,19 +31,23 @@ public class SalaryTimeListDAO {
 			param = tlb.getParam();
 			conn = DriverManager.getConnection(jdbcUrl, jdbcId, jdbcPass);
 			ArrayList<Integer> day = new ArrayList<>();
-			ArrayList<Integer> hour = new ArrayList<>();
-			ArrayList<Integer> minute = new ArrayList<>();
+			ArrayList<Integer> shour = new ArrayList<>();
+			ArrayList<Integer> sminute = new ArrayList<>();
+			ArrayList<Integer> fhour = new ArrayList<>();
+			ArrayList<Integer> fminute = new ArrayList<>();
 			ArrayList<String> weeks = new ArrayList<>();
 			if (param == 0) {
-				sql = "SELECT * FROM " + tlb.getLoginId() + "starttime WHERE year = ? AND month = ?";
+				sql = "SELECT * FROM " + tlb.getLoginId() + "timelist WHERE year = ? AND month = ?";
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, tlb.getSalaryyear());
 				ps.setInt(2, tlb.getSalarymonth());
 				rs = ps.executeQuery();
 				while (rs.next()) {
 					day.add(rs.getInt("day"));
-					hour.add(rs.getInt("hour"));
-					minute.add(rs.getInt("minute"));
+					shour.add(rs.getInt("starthour"));
+					sminute.add(rs.getInt("startminute"));
+					fhour.add(rs.getInt("finishhour"));
+					fminute.add(rs.getInt("finishminute"));
 					smo = rs.getInt("month");
 					sy = rs.getInt("year");
 					weeks.add(rs.getString("week"));
@@ -52,30 +56,11 @@ public class SalaryTimeListDAO {
 				tlb.setSalarystartmonth(smo);
 				tlb.setSalarystartyear(sy);
 				tlb.setSalarystartday(day);
-				tlb.setSalarystarthour(hour);
-				tlb.setSalarystartminute(minute);
+				tlb.setSalarystarthour(shour);
+				tlb.setSalarystartminute(sminute);
 				tlb.setSalaryweeks(weeks);
-
-			} else if (param == 1) {
-				sql = "SELECT * FROM " + tlb.getLoginId() + "finishtime WHERE year = ? AND month = ?";
-				ps = conn.prepareStatement(sql);
-				ps.setInt(1, tlb.getSalaryyear());
-				ps.setInt(2, tlb.getSalarymonth());
-
-				rs = ps.executeQuery();
-				while (rs.next()) {
-					day.add(rs.getInt("day"));
-					hour.add(rs.getInt("hour"));
-					minute.add(rs.getInt("minute"));
-					smo = rs.getInt("month");
-					sy = rs.getInt("year");
-					weeks.add(rs.getString("week"));
-				}
-				tlb.setSalaryfinishmonth(smo);
-				tlb.setSalaryfinishyear(sy);
-				tlb.setSalaryfinishday(day);
-				tlb.setSalaryfinishhour(hour);
-				tlb.setSalaryfinishminute(minute);
+				tlb.setSalaryfinishhour(fhour);
+				tlb.setSalaryfinishminute(fminute);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

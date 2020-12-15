@@ -363,6 +363,41 @@ public class method {
 	    	}
 	        return days;
 	}
+	public static int dismonthday(int smonth, int syear) {	//先月月取得メソッド
+		int days = 0;
+		 if (syear % 4 == 0) {
+	            if ((syear % 100) == 0) {
+	                if ((syear % 400) == 0) {
+	                	if(smonth == 1 || smonth == 3 || smonth == 5 || smonth == 7 || smonth == 8 || smonth == 10 || smonth == 12) {
+		              		days = 31;
+	                	}else if(smonth==2) {
+	                		days = 29;
+	                	}else {
+	                		days = 30;
+	                	}
+	                }else if(smonth == 1 || smonth == 3 || smonth == 5 || smonth == 7 || smonth == 8 || smonth == 10 || smonth == 12) {
+	            		days = 31;
+	            	}else if(smonth == 2) {
+	            		days = 28;
+	            	}else {
+	            		days = 30;
+	            	}
+	            }else if(smonth == 1 || smonth == 3 || smonth == 5 || smonth == 7 || smonth == 8 || smonth == 10 || smonth == 12) {
+	        		days = 31;
+	        	}else if(smonth==2) {
+	        		days = 29;
+	        	}else {
+	        		days = 30;
+	        	}
+	        }else if(smonth == 1 || smonth == 3 || smonth == 5 || smonth == 7 || smonth == 8 || smonth == 10 || smonth == 12) {
+	    		days = 31;
+	    	}else if(smonth==2) {
+	    		days = 29;
+	    	}else {
+	    		days = 30;
+	    	}
+	        return days;
+	}
 
 
 

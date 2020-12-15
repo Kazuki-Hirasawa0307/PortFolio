@@ -37,7 +37,9 @@ int paidvacation = (Integer) request.getAttribute("paidvacation");
 String id = (String) request.getAttribute("id");
 int year = (Integer) request.getAttribute("year");
 int month = (Integer) request.getAttribute("month");
-@SuppressWarnings("unchecked")ArrayList<Integer> dmonth = (ArrayList<Integer>)request.getAttribute("dmonth");
+@SuppressWarnings("unchecked")
+ArrayList<Integer> dmonth = (ArrayList<Integer>) request.getAttribute("dmonth");
+@SuppressWarnings("unchecked")ArrayList<Integer> dyear = (ArrayList<Integer>)request.getAttribute("dyear");
 
 int kouzyo = kenkou + kaigo + nenkin + koyou + syotoku + resident + tisoum + absencemoney;
 %>
@@ -80,31 +82,39 @@ int kouzyo = kenkou + kaigo + nenkin + koyou + syotoku + resident + tisoum + abs
 		<main>
 			<h1>給与明細</h1>
 			<hr />
-			<h3 style="text-align: center; margin-bottom: 3px; margin-top: 3px;">
-				名前 :
-				<%=name%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				社員ID :
-				<%=id%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<%=year%>
-				年
-				<%=month%>
-				月分
-			</h3>
+			<div class="pulldown">
+				<h3 style="text-align: center; margin-bottom: 3px; margin-top: 3px;">
+					名前 :
+					<%=name%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 社員ID :
+					<%=id%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<%=year%>
+					年
+					<%=month%>
+					月分
+				</h3>
+				<form action="Salary" method="post" class="pulldown">
+					<div class="pulldown">
+						<div class="cp_ipselect cp_sl03">
+							<select name="displaymonth">
+								<%
+									for (int i = 0; i < dmonth.size(); i++) {
+								%>
+								<option value=<%=dmonth.get(i)%>><%=dyear.get(i)%>年<%=dmonth.get(i)%>月分
+								</option>
+								<%
+									}
+								%>
+							</select>
+						</div>
+						<input type="submit" value="表示" class="button" />
+					</div>
+				</form>
+			</div>
+
 			<hr />
 
 			<!--  -->
-			<form action="Salary" method="post">
-				<select name="displaymonth">
-					<%
-					for(int i = 0; i < dmonth.size(); i++){
-					%>
-					<option value=<%=dmonth.get(i) %>><%=year%>年<%=dmonth.get(i) %>月分</option>
-					<%
-					}
-					%>
-				</select>
-				<input type="submit" value="表示" />
-			</form>
+
 
 			<table border="1" class="sa">
 				<tr>
@@ -259,8 +269,13 @@ int kouzyo = kenkou + kaigo + nenkin + koyou + syotoku + resident + tisoum + abs
 		<div class="foot">
 			<h3>ログイン情報</h3>
 			<div class="login">
-				<p>社員名 : <%=name%></p>&emsp;&emsp;
-				<p>社員番号 : <%=id%></p>
+				<p>
+					社員名 :
+					<%=name%></p>
+				&emsp;&emsp;
+				<p>
+					社員番号 :
+					<%=id%></p>
 			</div>
 			<hr style="width: 100%; border-top: 1px dashed #8c8b8b;" />
 			<div class="footmenu">

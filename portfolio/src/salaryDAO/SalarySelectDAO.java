@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import model.TimeListBean;
 
@@ -36,7 +37,17 @@ public class SalarySelectDAO {
 		int latetime = 0;
 		int paidvacation = 0;
 		int absence = 0;
+		int base = 0;
+		int position = 0;
+		int qualify = 0;
+		int family = 0;
+		int transport = 0;
+		int home = 0;
+		int hyouzyun = 0;
+		int resident = 0;
 		ArrayList<Integer> dmonth = new ArrayList<Integer>();
+		ArrayList<Integer> dyear = new ArrayList<Integer>();
+
 
 
 		try {
@@ -60,6 +71,18 @@ public class SalarySelectDAO {
 					shinya = rs.getInt("shinya");
 					paidvacation = rs.getInt("paidvacation");
 					absence = rs.getInt("absence");
+					base = rs.getInt("base");
+					position = rs.getInt("position");
+					qualify = rs.getInt("qualify");
+					family = rs.getInt("family");
+					transport = rs.getInt("transport");
+					home = rs.getInt("home");
+					hyouzyun = rs.getInt("hyozyun");
+					resident = rs.getInt("resident");
+
+
+
+
 				}
 
 				returnSalary.setYear(year);
@@ -75,6 +98,14 @@ public class SalarySelectDAO {
 				returnSalary.setShinya(shinya);
 				returnSalary.setPaidvacation(paidvacation);
 				returnSalary.setAbsence(absence);
+				returnSalary.setBase(base);
+				returnSalary.setFamily(family);
+				returnSalary.setPosition(position);
+				returnSalary.setQualify(qualify);
+				returnSalary.setTransport(transport);
+				returnSalary.setHome(home);
+				returnSalary.setHyouzyun(hyouzyun);
+				returnSalary.setResident(resident);
 			}
 			if (tb.getParam() == 3) {
 
@@ -96,6 +127,14 @@ public class SalarySelectDAO {
 					shinya = rs.getInt("shinya");
 					paidvacation = rs.getInt("paidvacation");
 					absence = rs.getInt("absence");
+					base = rs.getInt("base");
+					position = rs.getInt("position");
+					qualify = rs.getInt("qualify");
+					family = rs.getInt("family");
+					transport = rs.getInt("transport");
+					home = rs.getInt("home");
+					hyouzyun = rs.getInt("hyozyun");
+					resident = rs.getInt("resident");
 				}
 
 				returnSalary.setYear(year);
@@ -111,6 +150,14 @@ public class SalarySelectDAO {
 				returnSalary.setShinya(shinya);
 				returnSalary.setPaidvacation(paidvacation);
 				returnSalary.setAbsence(absence);
+				returnSalary.setBase(base);
+				returnSalary.setFamily(family);
+				returnSalary.setPosition(position);
+				returnSalary.setQualify(qualify);
+				returnSalary.setTransport(transport);
+				returnSalary.setHome(home);
+				returnSalary.setHyouzyun(hyouzyun);
+				returnSalary.setResident(resident);
 			}
 			if (tb.getParam() == 4) {
 
@@ -118,8 +165,11 @@ public class SalarySelectDAO {
 				ps = conn.prepareStatement(sql);
 				rs = ps.executeQuery();
 				while (rs.next()) {
+					dyear.add(rs.getInt("year"));
 					dmonth.add(rs.getInt("month"));
 				}
+				Collections.reverse(dmonth);
+				tb.setDyear(dyear);
 				tb.setDmonth(dmonth);
 			}
 		} catch (SQLException e) {

@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import model.TimeListBean;
 
@@ -34,19 +35,27 @@ public class TimeListDAO {
 			param = tlb.getParam();
 			conn = DriverManager.getConnection(jdbcUrl, jdbcId, jdbcPass);
 			ArrayList<Integer> day = new ArrayList<>();
-			ArrayList<Integer> hour = new ArrayList<>();
-			ArrayList<Integer> minute = new ArrayList<>();
+			ArrayList<Integer> shour = new ArrayList<>();
+			ArrayList<Integer> sminute = new ArrayList<>();
+			ArrayList<Integer> fhour = new ArrayList<>();
+			ArrayList<Integer> fminute = new ArrayList<>();
 			ArrayList<String> weeks = new ArrayList<>();
+			ArrayList<Integer> dmonth = new ArrayList<Integer>();
+			ArrayList<Integer> dyear = new ArrayList<Integer>();
+
+
 			if (param == 0) {
-				sql = "SELECT * FROM " + tlb.getLoginId() + "starttime WHERE year = ? AND month = ?";
+				sql = "SELECT * FROM " + tlb.getLoginId() + "timelist WHERE year = ? AND month = ?";
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, tlb.getSyear());
 				ps.setInt(2, tlb.getSmonth());
 				rs = ps.executeQuery();
 				while (rs.next()) {
 					day.add(rs.getInt("day"));
-					hour.add(rs.getInt("hour"));
-					minute.add(rs.getInt("minute"));
+					shour.add(rs.getInt("starthour"));
+					sminute.add(rs.getInt("startminute"));
+					fhour.add(rs.getInt("finishhour"));
+					fminute.add(rs.getInt("finishminute"));
 					smo = rs.getInt("month");
 					sy = rs.getInt("year");
 					weeks.add(rs.getString("week"));
@@ -54,28 +63,50 @@ public class TimeListDAO {
 				tlb.setSmonth(smo);
 				tlb.setSyear(sy);
 				tlb.setStartday(day);
-				tlb.setStarthour(hour);
-				tlb.setStartminute(minute);
+				tlb.setStarthour(shour);
+				tlb.setStartminute(sminute);
+				tlb.setFinishhour(fhour);
+				tlb.setFinishminute(fminute);
 				tlb.setWeeks(weeks);
-			} else if (param == 1) {
-				sql = "SELECT * FROM " + tlb.getLoginId() + "finishtime WHERE year = ? AND month = ?";
+
+			}
+			if (param == 2) {
+				sql = "SELECT * FROM " + tlb.getLoginId() + "timelist WHERE year = ? AND month = ?";
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, tlb.getSyear());
-				ps.setInt(2, tlb.getSmonth());
+				ps.setInt(2, tlb.getDisplaymonth());
 				rs = ps.executeQuery();
 				while (rs.next()) {
 					day.add(rs.getInt("day"));
-					hour.add(rs.getInt("hour"));
-					minute.add(rs.getInt("minute"));
+					shour.add(rs.getInt("starthour"));
+					sminute.add(rs.getInt("startminute"));
+					fhour.add(rs.getInt("finishhour"));
+					fminute.add(rs.getInt("finishminute"));
 					smo = rs.getInt("month");
 					sy = rs.getInt("year");
 					weeks.add(rs.getString("week"));
 				}
-				tlb.setFmonth(smo);
-				tlb.setFyear(sy);
-				tlb.setFinishday(day);
-				tlb.setFinishhour(hour);
-				tlb.setFinishminute(minute);
+				tlb.setSmonth(smo);
+				tlb.setSyear(sy);
+				tlb.setStartday(day);
+				tlb.setStarthour(shour);
+				tlb.setStartminute(sminute);
+				tlb.setFinishhour(fhour);
+				tlb.setFinishminute(fminute);
+				tlb.setWeeks(weeks);
+			}
+			if (param == 4) {
+				sql = "SELECT * FROM " + tlb.getLoginId() + "timelist WHERE day = 1";
+				ps = conn.prepareStatement(sql);
+				rs = ps.executeQuery();
+				while (rs.next()) {
+					dyear.add(rs.getInt("year"));
+					dmonth.add(rs.getInt("month"));
+				}
+				Collections.reverse(dmonth);
+				tlb.setDmonth(dmonth);
+				tlb.setDyear(dyear);
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

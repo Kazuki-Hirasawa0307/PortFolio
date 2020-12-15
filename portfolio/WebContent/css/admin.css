@@ -1,6 +1,12 @@
 @charset "UTF-8";
 
 
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
+
+@import url('https://fonts.googleapis.com/css?family=Sawarabi+Mincho');
+
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+JP');
+
 body {
   background: #DCDDDF url(https://cssdeck.com/uploads/media/items/7/7AF2Qzt.png);
   color: #000;
@@ -8,6 +14,8 @@ body {
   margin: 0 auto;
   padding: 0;
   position: relative;
+  	font-family: 'Noto Serif JP', sans-serif;
+
 }
 h1{ font-size:28px;}
 h2{ font-size:20px;}
@@ -56,7 +64,6 @@ form:after {
 }
 #content h1 {
   color: #7E7E7E;
-  font: bold 25px Helvetica, Arial, sans-serif;
   letter-spacing: -0.05em;
   line-height: 20px;
   margin: 10px 0 30px;

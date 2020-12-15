@@ -2,14 +2,11 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
 <head>
 <link rel="stylesheet" href="css\admin.css">
-
 <meta charset="UTF-8">
 <title>管理者ページ</title>
 </head>
-
 <body>
 	<div class="container">
 		<section id="content">
@@ -35,8 +32,7 @@
 			</h2>
 			<br />
 			<div>
-				管理社員の内、有給・欠勤があった社員の<br />
-				情報をこちらから入力してください。<br />
+				管理社員の内、有給・欠勤があった社員の<br /> 情報をこちらから入力してください。<br />
 				前月分を次月の10日までに更新してください。
 				<hr />
 			</div>

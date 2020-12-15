@@ -27,12 +27,10 @@
 					}
 				%>
 				<div>
-					<input type="text" placeholder="Login ID" required="" id="username"
-						name="loginId" onInput="checkForm(this)" />
+					<input type="text" placeholder="Login ID" required="" id="username" name="loginId" onInput="checkForm(this)" />
 				</div>
 				<div>
-					<input type="password" placeholder="Password" required=""
-						id="password" name="pass" onInput="checkForm(this)" />
+					<input type="password" placeholder="Password" required="" id="password" name="pass" onInput="checkForm(this)" />
 				</div>
 				<div>
 					<input type="submit" value="Login" />

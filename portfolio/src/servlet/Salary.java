@@ -33,6 +33,9 @@ public class Salary extends HttpServlet {
 			String pass = (String) session.getAttribute("pass");			//セッションからpassを取得
 			tb.setPass(pass);												//ビーンにpassセット
 			tb.setLoginId(id);												//ビーンにIDセット
+			tb.setSyear((Integer)session.getAttribute("syear"));
+			tb.setSmonth((Integer)session.getAttribute("smonth"));
+			tb.setSday((Integer)session.getAttribute("sday"));
 
 //ーーーーーーーーーーー給与明細各項目の呼び出し・計算処理ーーーーーーーーーーーーーーーーー
 
@@ -48,7 +51,7 @@ public class Salary extends HttpServlet {
 			param = 2;	tb.setParam(param);
 			TimeListBean returnSalary = ssd.salary(tb);					//出退勤情報をreturnSalaryへセット
 			SalaryTotal st = new SalaryTotal();								//SalaryTotalクラスインスタンス化
-			TimeListBean returnTotal = st.Total(returnSalary, returnAb,tb);//Totalコンストラクタでjspで表示する数値を計算
+			TimeListBean returnTotal = st.Total(returnSalary,tb);//Totalコンストラクタでjspで表示する数値を計算
 
 
 
@@ -58,16 +61,16 @@ public class Salary extends HttpServlet {
 
 	    	request.setAttribute("role", role);									//管理権限情報
 	    	request.setAttribute("id", id);										//社員番号
-			request.setAttribute("resident", returnAb.getResident());			//住民税
+			request.setAttribute("resident", returnSalary.getResident());			//住民税
 			request.setAttribute("year", returnSalary.getYear());				//先月の該当年
 			request.setAttribute("month", returnSalary.getMonth());				//先月
 			request.setAttribute("name", returnAb.getName());					//氏名
-			request.setAttribute("base", returnAb.getBase());					//基本給
-			request.setAttribute("family", returnAb.getFamily());				//家族手当
-			request.setAttribute("position", returnAb.getPosition());			//役職手当
-			request.setAttribute("qualify", returnAb.getQualify());				//資格手当
-			request.setAttribute("transport", returnAb.getTransport());			//交通費
-			request.setAttribute("home", returnAb.getHome());					//住宅手当
+			request.setAttribute("base", returnSalary.getBase());					//基本給
+			request.setAttribute("family", returnSalary.getFamily());				//家族手当
+			request.setAttribute("position", returnSalary.getPosition());			//役職手当
+			request.setAttribute("qualify", returnSalary.getQualify());				//資格手当
+			request.setAttribute("transport", returnSalary.getTransport());			//交通費
+			request.setAttribute("home", returnSalary.getHome());					//住宅手当
 			request.setAttribute("nenkin", returnTotal.getNenkin());			//厚生年金
 			request.setAttribute("kenkou", returnTotal.getKenkou());			//健康保険料
 			request.setAttribute("kaigo", returnTotal.getKaigo());				//介護保険料
@@ -91,6 +94,8 @@ public class Salary extends HttpServlet {
 			request.setAttribute("absence", returnSalary.getAbsence());			//欠勤日数
 			request.setAttribute("paidvacation", returnSalary.getPaidvacation());//有給日数
 			request.setAttribute("dmonth", tb.getDmonth());
+			request.setAttribute("dyear", tb.getDyear());
+
 
 
 			}catch(Exception e) {
@@ -141,7 +146,10 @@ public class Salary extends HttpServlet {
 			param = 3;	tb.setParam(param);										//パラム3をセット
 			TimeListBean returnSalary = ssd.salary(tb);						//出退勤情報をreturnSalaryへセット
 			SalaryTotal st = new SalaryTotal();									//SalaryTotalクラスインスタンス化
-			TimeListBean returnTotal = st.Total(returnSalary, returnAb,tb);	//Totalコンストラクタでjspで表示する数値を計算
+			TimeListBean returnTotal = st.Total(returnSalary,tb);	//Totalコンストラクタでjspで表示する数値を計算
+
+
+
 
 //－－－－－－－－－－－－－各変数をjspへ転送－－－－－－－－－－－－－－－－－－－－－
 
@@ -149,16 +157,16 @@ public class Salary extends HttpServlet {
 
 	    	request.setAttribute("role", role);									//管理権限情報
 	    	request.setAttribute("id", id);										//社員番号
-			request.setAttribute("resident", returnAb.getResident());			//住民税
+			request.setAttribute("resident", returnSalary.getResident());			//住民税
 			request.setAttribute("year", returnSalary.getYear());				//先月の該当年
 			request.setAttribute("month", returnSalary.getMonth());				//先月
 			request.setAttribute("name", returnAb.getName());					//氏名
-			request.setAttribute("base", returnAb.getBase());					//基本給
-			request.setAttribute("family", returnAb.getFamily());				//家族手当
-			request.setAttribute("position", returnAb.getPosition());			//役職手当
-			request.setAttribute("qualify", returnAb.getQualify());				//資格手当
-			request.setAttribute("transport", returnAb.getTransport());			//交通費
-			request.setAttribute("home", returnAb.getHome());					//住宅手当
+			request.setAttribute("base", returnSalary.getBase());					//基本給
+			request.setAttribute("family", returnSalary.getFamily());				//家族手当
+			request.setAttribute("position", returnSalary.getPosition());			//役職手当
+			request.setAttribute("qualify", returnSalary.getQualify());				//資格手当
+			request.setAttribute("transport", returnSalary.getTransport());			//交通費
+			request.setAttribute("home", returnSalary.getHome());					//住宅手当
 			request.setAttribute("nenkin", returnTotal.getNenkin());			//厚生年金
 			request.setAttribute("kenkou", returnTotal.getKenkou());			//健康保険料
 			request.setAttribute("kaigo", returnTotal.getKaigo());				//介護保険料
@@ -182,6 +190,7 @@ public class Salary extends HttpServlet {
 			request.setAttribute("absence", returnSalary.getAbsence());			//欠勤日数
 			request.setAttribute("paidvacation", returnSalary.getPaidvacation());//有給日数
 			request.setAttribute("dmonth", tb.getDmonth());						//支給給与月一覧
+			request.setAttribute("dyear", tb.getDyear());
 
 
 

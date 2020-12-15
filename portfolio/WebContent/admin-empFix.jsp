@@ -17,35 +17,25 @@ String mail = (String)request.getAttribute("mail");
 int resident = (Integer)request.getAttribute("resident");
 
 
-String rofix1 = null;
-String rofix2 = null;
+String roleFix1 = null;
+String roleFix2 = null;
 if(role == 1){
-	rofix1 = "管理者登録に変更";
-	rofix2 = "ユーザー登録を維持";
+	roleFix1 = "管理者登録に変更";
+	roleFix2 = "ユーザー登録を維持";
 }else{
-	rofix1 = "管理者登録を維持";
-	rofix2 = "ユーザー登録に変更";
+	roleFix1 = "管理者登録を維持";
+	roleFix2 = "ユーザー登録に変更";
 }
 
 %>
-
 <!DOCTYPE html>
 <html>
-
 <head>
-
-
-
-
-
-	<meta charset="UTF-8">
-	<title>社員情報修正ページ</title>
-	<link rel="stylesheet" href="css\stylefix.css">
-
+<meta charset="UTF-8">
+<title>社員情報修正ページ</title>
+<link rel="stylesheet" href="css\stylefix.css">
 </head>
-
 <body>
-
 	<div class="container">
 		<section id="content">
 			<h1>社員情報修正ページ</h1>
@@ -54,8 +44,6 @@ if(role == 1){
 			<h5>生年月日は数字8桁で入力してください。</h5>
 			<h5>標準報酬月額は保険者の「標準報酬決定通知書」に記載の金額を入力してください</h5>
 			<h5>住民税は納付書金額に従い入力してください。</h5>
-
-
 			<form action="AccountFix" method="post">
 				<table>
 					<tbody>
@@ -93,10 +81,9 @@ if(role == 1){
 							<th style="height: 74px;">登録ステータス</th>
 							<td>ユーザー登録</td>
 							<td>
-								<input type="radio" name="role" value="1"><%=rofix1%><br>
-								<input type="radio" name="role" value="2"><%=rofix2 %>
+								<input type="radio" name="role" value="1"><%=roleFix1%><br>
+								<input type="radio" name="role" value="2"><%=roleFix2 %>
 							</td>
-
 						</tr>
 						<tr>
 							<th>基本給</th>
@@ -138,11 +125,8 @@ if(role == 1){
 							<td><%=resident %> 円</td>
 							<td><input type="number" name="resident" style="border-width:0px"> 円</td>
 						</tr>
-
 					</tbody>
 				</table>
-
-
 				<input type=hidden name=id value=<%=loginId %>>
 				<input type=hidden name=pass value=<%=pass %>>
 				<h5>送信前に入力内容を確認してください。</h5>
@@ -152,16 +136,10 @@ if(role == 1){
 				<br /><br /><br />
 		</section>
 	</div>
-
 	<script>
 		const func1 = () => {
 			alert('社員情報を更新しました。');
 		};
-
 	</script>
-
-
-
 </body>
-
 </html>

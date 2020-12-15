@@ -1,4 +1,11 @@
 
+
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
+
+@import url('https://fonts.googleapis.com/css?family=Sawarabi+Mincho');
+
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+JP');
+
 table{
     width: 100%;
     border-collapse: collapse;
@@ -27,6 +34,8 @@ table{
     margin: 0 auto;
     padding: 0;
     position: relative;
+      	font-family: 'Noto Serif JP', sans-serif;
+
   }
   h1{ font-size:30px;}
   h2{ font-size:20px;}
@@ -75,7 +84,6 @@ table{
   }
   #content h1 {
     color: #7E7E7E;
-    font: bold 25px Helvetica, Arial, sans-serif;
     letter-spacing: -0.05em;
     line-height: 20px;
     margin: 10px 0 30px;

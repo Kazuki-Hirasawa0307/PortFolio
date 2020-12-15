@@ -15,14 +15,11 @@ public class AccountDAO {
 	String pass = "root";
 	private Connection con;
 
-	// ログインアカウントを探す
 	public TimeListBean findAccount(TimeListBean tb) {
 		con = null;
 
-		// 戻り値の用意
 		TimeListBean returnAb = new TimeListBean();
 
-		// データベースへ接続
 		try {
 			con = DriverManager.getConnection(url, id, pass);
 			ResultSet rs = null;
@@ -79,7 +76,7 @@ public class AccountDAO {
 					returnAb.setMail(rs.getString("mail"));
 					returnAb.setBirthday(rs.getInt("birthday"));
 					returnAb.setResident(rs.getInt("resident"));
-					
+
 
 				} else {
 					// アカウントがなければnullを返す
